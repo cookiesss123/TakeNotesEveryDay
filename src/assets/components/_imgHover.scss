@@ -1,0 +1,27 @@
+// .card .cardImg{
+//   overflow:hidden;
+// }
+// .enlargeImg{
+//   width: 300px;
+//   overflow:hidden;
+// }
+// .card .cardImg img{
+//   transform:scale(1,1);
+//   transition: all .4s ease-out;
+// }
+// .card:hover .enlargeImg img{
+//   transform:scale(1.2,1.2);
+// }
+
+
+
+.menu .card{
+  overflow:hidden;
+}
+.menu .card:hover img{
+  transform: scale(1.2);
+}
+.menu .card img{
+  transform: scale(1);
+  transition: all .4s ease-out;
+}
