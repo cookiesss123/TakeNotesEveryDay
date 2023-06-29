@@ -327,7 +327,7 @@
         </div>
 
         <div :class="{'d-none': pageStatus === '收支紀錄' || pageStatus === '每月費用、收益總計'}">
-          <div class="d-flex justify-content-center">
+          <div class="d-flex align-items-center justify-content-center mb-5">
             <select name="" class="form-select fs-3 text-center border-0" v-model="annualSelectYear" style="width: 150px;">
               <option value="2023" selected>2023 年</option>
               <option value="2024">2024 年</option>
