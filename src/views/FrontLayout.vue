@@ -16,13 +16,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto  d-flex align-items-center fs-5">
                         <li class="nav-item">
-                            <RouterLink to="/home" active-class="active-link" class="nav-link fw-bold me-3" >首頁</RouterLink>
+                            <RouterLink to="/home" active-class="active-link" class="nav-link fw-bold me-lg-3" >首頁</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/todolist" active-class="active-link" class="nav-link fw-bold me-3">清單</RouterLink>
+                            <RouterLink to="/todolist" active-class="active-link" class="nav-link fw-bold me-lg-3">清單</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/calendar" active-class="active-link" class="nav-link fw-bold me-3">行事曆</RouterLink>
+                            <RouterLink to="/calendar" active-class="active-link" class="nav-link fw-bold me-lg-3">行事曆</RouterLink>
                         </li>
                         <li class="nav-item">
                             <RouterLink to="/accounting" active-class="active-link" class="nav-link fw-bold ">記帳</RouterLink>
@@ -30,7 +30,7 @@
                     </ul>
                     <ul v-if="!uid" class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center fs-5">
                         <li class="nav-item">
-                            <RouterLink to="/login" active-class="active-link" class="nav-link fw-bold me-3">登入</RouterLink>
+                            <RouterLink to="/login" active-class="active-link" class="nav-link fw-bold me-lg-3">登入</RouterLink>
                         </li>
                         <li class="nav-item">
                             <RouterLink to="/signup" active-class="active-link" class="nav-link fw-bold">註冊</RouterLink>

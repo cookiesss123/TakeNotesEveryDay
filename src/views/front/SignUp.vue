@@ -1,6 +1,6 @@
 <template>
-       <main class="mt-5 d-flex align-items-center bg-white">
-            <div class="container py-lg-7">
+       <main class="mt-5 d-flex align-items-center bg-white" style="overflow-x: hidden;">
+            <div class="container py-lg-7 py-5">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item fs-5">

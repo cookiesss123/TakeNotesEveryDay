@@ -1,5 +1,5 @@
 <template>
-    <div class="container d-flex flex-column my-7">
+    <div class="container d-flex flex-column my-7" style="overflow-x: hidden;">
         <h2 class="text-center mb-3">記帳</h2>
         <ul class="list-unstyled mb-5 fs-5 d-lg-flex" style="margin: 0 auto;">
             <li class="me-5 mb-3">
@@ -273,8 +273,8 @@
                     <option value="12">12 月</option>
                 </select>
                 <div class="d-flex">
-                  <button type="button" class="btn border" :disabled="monthlySelectMonth === 1" @click="monthlySelectMonth = monthlySelectMonth - 1"><i class="bi bi-caret-up-fill "></i></button>
-                  <button type="button" class="btn border ms-3" :disabled="monthlySelectMonth === 12" @click="monthlySelectMonth = monthlySelectMonth + 1"><i class="bi bi-caret-down-fill "></i></button>
+                  <button type="button" class="btn border" :disabled="monthlySelectMonth === 1" @click="monthlySelectMonth = monthlySelectMonth - 1"><i class="bi bi-caret-up-fill text-green"></i></button>
+                  <button type="button" class="btn border ms-3" :disabled="monthlySelectMonth === 12" @click="monthlySelectMonth = monthlySelectMonth + 1"><i class="bi bi-caret-down-fill text-green"></i></button>
                 </div>
             </div>
 
@@ -327,7 +327,8 @@
         </div>
 
         <div :class="{'d-none': pageStatus === '收支紀錄' || pageStatus === '每月費用、收益總計'}">
-            <select name="" class="form-select fs-3 text-center border-0" v-model="annualSelectYear" style="width: 150px; margin: 0 auto;">
+          <div class="d-flex justify-content-center">
+            <select name="" class="form-select fs-3 text-center border-0" v-model="annualSelectYear" style="width: 150px;">
               <option value="2023" selected>2023 年</option>
               <option value="2024">2024 年</option>
               <option value="2025">2025 年</option>
@@ -343,6 +344,9 @@
               <option value="2035">2035 年</option>
               <option value="2036">2036 年</option>
             </select>
+            <button type="button" class="btn border" :disabled="annualSelectYear === 2023" @click="annualSelectYear = annualSelectYear - 1"><i class="bi bi-caret-up-fill text-green"></i></button>
+            <button type="button" class="btn border ms-3" :disabled="annualSelectYear === 2036" @click="annualSelectYear = annualSelectYear + 1"><i class="bi bi-caret-down-fill text-green"></i></button>
+          </div>
 
             <div class="row row-cols-lg-2 gy-5">
                 <div class="col d-flex flex-column align-items-center" >
