@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex flex-column my-7">
+    <div data-aos="fade-up" data-aos-duration="1000" class="d-flex flex-column my-7">
         <h2 class="text-center mb-lg-5">行事曆</h2>
         <section class="mx-auto col-lg-10 d-flex flex-column">
             <div class="col-lg-2 mb-4" style="margin: 0 auto;">
@@ -331,6 +331,7 @@ export default {
     }
   },
   mounted () {
+    window.scrollTo(0, 0)
     this.getCalendar()
     this.dayNum = this.dayArr[this.selectMonth.split('月')[0] - 1]
     this.countFebruaryDay(this.selectYear)

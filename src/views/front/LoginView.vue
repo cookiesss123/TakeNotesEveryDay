@@ -1,5 +1,5 @@
 <template>
-      <main class="pt-6 d-flex align-items-center bg-white" style="overflow-x: hidden;">
+      <main data-aos="fade-up" data-aos-duration="1000" class="pt-6 d-flex align-items-center bg-white" style="overflow-x: hidden;">
             <div class="container py-lg-7 py-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -139,7 +139,7 @@ export default {
     }
   },
   mounted () {
-
+    window.scrollTo(0, 0)
   }
 }
 </script>

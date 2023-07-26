@@ -74,7 +74,7 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <div data-aos="fade-up"  data-aos-duration="1000">
     <div class="my-7">
       <section class="container mb-5">
         <h2 class="mb-5 d-flex align-items-center justify-content-center">

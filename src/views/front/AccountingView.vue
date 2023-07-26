@@ -1,5 +1,5 @@
 <template>
-    <div class="container d-flex flex-column my-7" style="overflow-x: hidden;">
+    <div data-aos="fade-up" data-aos-duration="1000" class="container d-flex flex-column my-7" style="overflow-x: hidden;">
         <h2 class="text-center mb-3">記帳</h2>
         <ul class="list-unstyled mb-5 fs-5 d-lg-flex" style="margin: 0 auto;">
             <li class="me-5 mb-3">
@@ -742,6 +742,7 @@ export default {
 
   },
   mounted () {
+    window.scrollTo(0, 0)
     this.date = new Date().getDate()
     this.accountId = `${this.selectYear}/${this.selectMonth.split('月')[0]}/${this.date}`
     this.accountId = this.accountId.replace(/\//g, '-')

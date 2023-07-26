@@ -1,5 +1,5 @@
 <template>
-       <main class="mt-5 d-flex align-items-center bg-white" style="overflow-x: hidden;">
+       <main data-aos="fade-up" data-aos-duration="1000" class="mt-5 d-flex align-items-center bg-white" style="overflow-x: hidden;">
             <div class="container py-lg-7 py-5">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -69,6 +69,7 @@
                                                 placeholder="請輸入您的信箱"
                                                 rules="email|required"
                                                 v-model="user.email"
+                                                autocomplete="email"
                                             ></VField>
                                             <ErrorMessage name="信箱" class="invalid-feedback"></ErrorMessage>
                                         </div>
@@ -83,6 +84,7 @@
                                                 placeholder="請輸入密碼"
                                                 rules="required|min:6"
                                                 v-model="user.password"
+                                                autocomplete="new-password"
                                             ></VField>
                                             <ErrorMessage name="密碼" class="invalid-feedback"></ErrorMessage>
                                         </div>
@@ -97,6 +99,7 @@
                                                 placeholder="請再次輸入密碼"
                                                 rules="required|confirmed:@密碼"
                                                 v-model="user.confirmPassword"
+                                                autocomplete="new-password"
                                             ></VField>
                                             <ErrorMessage name="確認密碼" class="invalid-feedback"></ErrorMessage>
                                         </div>
@@ -163,6 +166,9 @@ export default {
         })
       }
     }
+  },
+  mounted () {
+    window.scrollTo(0, 0)
   }
 }
 </script>
