@@ -70,6 +70,9 @@ const utilityStore = defineStore('utility', {
         icon,
         title: message
       })
+    },
+    goToTop () {
+      window.scrollTo(0, 0)
     }
   },
   getters: {}

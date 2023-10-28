@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-column" style="min-height:100vh;">
         <header class="fixed-top">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-green">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <RouterLink to="/home" class="navbar-brand d-flex align-items-center">
                   <img src="../assets/images/icon.png" class="me-2" alt="logo" style="width: 40px; height: 40px;">
@@ -30,10 +30,7 @@
                     </ul>
                     <ul v-if="!uid" class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center fs-5">
                       <li class="nav-item">
-                          <RouterLink to="/login" active-class="active-link" class="nav-link fw-bold me-lg-3">登入</RouterLink>
-                      </li>
-                      <li class="nav-item">
-                          <RouterLink to="/signup" active-class="active-link" class="nav-link fw-bold">註冊</RouterLink>
+                          <RouterLink to="/loginSignup" active-class="active-link" class="nav-link fw-bold me-lg-3">登入 / 註冊</RouterLink>
                       </li>
                     </ul>
                     <ul v-else-if="uid" class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center fs-5">
@@ -51,7 +48,7 @@
             </nav>
         </header>
         <RouterView></RouterView>
-        <footer class="bg-green mt-auto">
+        <footer class="bg-primary mt-auto">
           <div class="container d-flex flex-column flex-lg-row align-items-center py-40" >
             <div class="ms-lg-auto d-flex flex-column align-items-lg-end align-items-center">
               <ul id="contactInfo" class="list-unstyled d-flex">

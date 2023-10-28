@@ -21,8 +21,8 @@ export default {
           <div class="card bg-dark text-white border-0 h-100 bg-white">
             <img :src="item.img" class="h-100 card-img object-fit-cover" :alt="item.title">
             <RouterLink :to="`/${item.link}`" class="card-img-overlay d-flex text-decoration-none">
-              <h3 class="card-title my-auto ms-auto text-green d-flex align-items-center"><span class="fw-bold">{{ item.title }}</span><a href="#" class="stretched-link btn btn-outline-green ms-3 fw-bold"><span class="fs-5">+</span></a></h3>
-              <p class="card-text mt-auto bg-green text-white">{{ item.subTitle }}</p>
+              <h3 class="card-title my-auto ms-auto text-primary d-flex align-items-center"><span class="fw-bold">{{ item.title }}</span><a href="#" class="stretched-link btn btn-outline-primary ms-3 fw-bold"><span class="fs-5">+</span></a></h3>
+              <p class="card-text mt-auto bg-primary text-white">{{ item.subTitle }}</p>
             </RouterLink>
           </div>
         </div>

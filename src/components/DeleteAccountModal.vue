@@ -20,7 +20,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                <button type="button" class="btn btn-gray" data-bs-dismiss="modal">關閉</button>
                 <button type="button" class="btn btn-danger" @click="deleteRecord">
                 確認刪除
                 </button>

@@ -4,7 +4,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item fs-5">
-                        <RouterLink to="/home" class="link-green  d-none d-lg-block">首頁</RouterLink>
+                        <RouterLink to="/home" class="link-primary  d-none d-lg-block">首頁</RouterLink>
                       </li>
                       <li class="breadcrumb-item active fs-5  d-none d-lg-block" aria-current="page">登入</li>
                     </ol>
@@ -20,23 +20,23 @@
                       </div>
                   </div>
                   <div class="col">
-                      <div class="login-card card h-100 border" style="border-radius: 20px; padding: 0 !important;">
+                      <div class="card-login card h-100 border" style="border-radius: 20px; padding: 0 !important;">
                         <div class="card-body border-0 p-0">
                             <div class="card-header bg-white py-0 "  style="border-radius: 20px 20px 0px 0px;">
                                 <div class="row " style="margin: 0 -18px;">
-                                    <h2 class="h5 col mb-0 text-center py-3 position-relative bg-green text-decoration-none fw-bold text-white" style="padding-bottom: 10px; border-radius: 20px 0 0 0;">
+                                    <h2 class="h5 col mb-0 text-center py-3 position-relative bg-primary text-decoration-none fw-bold text-white" style="padding-bottom: 10px; border-radius: 20px 0 0 0;">
                                         登入
                                     </h2>
                                     <h2 class="h5 col mb-0 text-center py-3 position-relative" style="padding-bottom: 10px; border-radius: 0 20px 0 0;">
-                                        <RouterLink to="/signup" class="link-dark stretched-link text-decoration-none fw-bold link-green ">註冊</RouterLink>
+                                        <RouterLink to="/signup" class="link-dark stretched-link text-decoration-none fw-bold link-primary ">註冊</RouterLink>
                                     </h2>
                                 </div>
                             </div>
-                            <h1 class="text-green text-center h3 mt-4">
+                            <h1 class="text-primary text-center h3 mt-4">
                                 歡迎來到
                                 <div class="d-flex align-items-center mt-2 justify-content-center">
                                     <img src="../../assets/images/icon.png" class="me-2" alt="" style="width: 40px; height: 40px;">
-                                    <div class="text-green">
+                                    <div class="text-primary">
                                       <p class="fs-5 fw-bold mb-0 text-start">記錄每一天</p>
                                       <p class="fs-6 fw-bold mb-0 text-start">Take Notes Every Day</p>
                                     </div>
@@ -45,7 +45,7 @@
                             <VForm ref="form" class="mx-5 card-body my-3" v-slot="{ errors }"  @submit="login">
                                 <div class="row gy-5 d-flex">
                                     <div class="col-12 fs-5">
-                                        <label for="email" class="form-label text-secondary" :class="{'text-green':user.email && !errors['信箱']}"><i class="bi bi-envelope-fill" ></i> 信箱</label>
+                                        <label for="email" class="form-label text-gray" :class="{'text-primary':user.email && !errors['信箱']}"><i class="bi bi-envelope-fill" ></i> 信箱</label>
                                         <VField
                                             id="email"
                                             name="信箱"
@@ -60,7 +60,7 @@
                                         <ErrorMessage name="信箱" class="invalid-feedback"></ErrorMessage>
                                     </div>
                                     <div class="col-12 fs-5">
-                                        <label for="password" class="form-label text-secondary" :class="{'text-green':user.password && !errors['密碼']}"><i class="bi bi-lock-fill" ></i> 密碼</label>
+                                        <label for="password" class="form-label text-gray" :class="{'text-primary':user.password && !errors['密碼']}"><i class="bi bi-lock-fill" ></i> 密碼</label>
                                         <VField
                                             id="password"
                                             name="密碼"
@@ -75,7 +75,7 @@
                                         <ErrorMessage name="密碼" class="invalid-feedback"></ErrorMessage>
                                     </div>
                                     <div class="col-12 mt-9" >
-                                        <button type="submit" class="btn btn-green w-100">登入</button>
+                                        <button type="submit" class="btn btn-primary w-100">登入</button>
                                     </div>
                                 </div>
                             </VForm>
@@ -144,11 +144,5 @@ export default {
 }
 </script>
 <style>
-.login-card .card-header h2:hover {
-    background-color: #518083;
-    color: white;
-}
-.login-card .card-header h2:hover a {
-    color: white !important;
-}
+
 </style>

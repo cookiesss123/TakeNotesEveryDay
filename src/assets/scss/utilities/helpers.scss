@@ -4,9 +4,29 @@
 .cursor-pointer{
     cursor: pointer;
 }
+.pointer-events-none{
+    pointer-events: none;
+}
 .object-fit-cover{
     object-fit: cover;
 }
 .word-break-all{ // 強制文字在框框內
     word-break: break-all;
+}
+.overflow-x-hidden{
+    overflow-x: hidden;
+}
+
+
+.rounded-20{
+    border-radius: 20px;
+}
+.rounded-top-20{
+    border-radius: 20px 20px 0px 0px;
+}
+.rounded-left-20{
+    border-radius: 20px 0 0 0;
+}
+.rounded-right-20{
+    border-radius: 0 20px 0 0;
 }

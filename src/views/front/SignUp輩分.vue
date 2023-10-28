@@ -1,18 +1,18 @@
 <template>
-       <main data-aos="fade-up" data-aos-duration="1000" class="mt-5 d-flex align-items-center bg-white" style="overflow-x: hidden;">
+       <main data-aos="fade-up" data-aos-duration="1000" class="mt-5 d-flex align-items-center bg-white overflow-x-hidden">
             <div class="container py-lg-7 py-5">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item fs-5">
-                        <RouterLink to="/home" class="link-green  d-none d-lg-block">首頁</RouterLink>
+                        <RouterLink to="/home" class="link-primary  d-none d-lg-block">首頁</RouterLink>
                         </li>
                       <li class="breadcrumb-item active fs-5 d-none d-lg-block" aria-current="page">註冊</li>
                     </ol>
                 </nav>
                 <div class="row mt-3 gx-5 rounded py-3">
                     <div class="col d-none d-lg-block">
-                        <div class="card border-0 h-100 text-white" style="border-radius: 20px;">
-                            <img src="https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" class="card-img h-100" alt="..." style="object-fit: cover; border-radius: 20px;">
+                        <div class="card border-0 h-100 text-white rounded-20">
+                            <img src="https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" class="card-img h-100 object-fit-cover rounded-20" alt="白紙">
                             <div class="card-img-overlay d-flex align-items-center justify-content-center">
                                 <h2 class="card-title text-dark"> 快速紀錄
                                     <span class="text-blueGreen"> 重要事項 </span></h2>
@@ -20,14 +20,14 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="signup-card card h-100 " style="border-radius: 20px; padding: 0 !important; ">
+                        <div class="signup-card card h-100 rounded-20">
                             <div class="card-body p-0">
                                 <div class="card-header bg-white py-0 "  style="border-radius: 20px 20px 0px 0px;">
                                     <div class="row " style="margin: 0 -18px;">
-                                        <h2 class="h5 col mb-0 text-center py-3 position-relative" style="padding-bottom: 10px; border-radius: 20px 0 0 0;">
+                                        <h2 class="h5 col mb-0 text-center py-3 position-relative" style="border-radius: 20px 0 0 0;">
                                             <RouterLink to="/login" class="link-dark stretched-link text-decoration-none fw-bold link-blueGreen ">登入</RouterLink>
                                         </h2>
-                                        <h2 class="h5 col mb-0 text-center py-3 position-relative bg-blueGreen text-decoration-none fw-bold text-white" style="padding-bottom: 10px; border-radius: 0 20px 0 0;">
+                                        <h2 class="h5 col mb-0 text-center py-3 position-relative bg-blueGreen text-decoration-none fw-bold text-white" style="border-radius: 0 20px 0 0;">
                                             註冊
                                         </h2>
                                     </div>
@@ -35,8 +35,8 @@
                                 <h1 class="text-blueGreen text-center h3 mt-4">
                                   歡迎來到
                                   <div class="d-flex align-items-center mt-2 justify-content-center">
-                                      <img src="../../assets/images/icon.png" class="me-2" alt="" style="width: 40px; height: 40px;">
-                                      <div class="text-green">
+                                      <img src="../../assets/images/icon.png" class="me-2" alt="logo" style="width: 40px; height: 40px;">
+                                      <div class="text-primary">
                                         <p class="fs-5 fw-bold mb-0 text-start">記錄每一天</p>
                                         <p class="fs-6 fw-bold mb-0 text-start">Take Notes Every Day</p>
                                       </div>
@@ -45,7 +45,7 @@
                                 <VForm ref="form" class="mx-5 card-body my-3" v-slot="{ errors }" @submit="signUp">
                                     <div class="row gy-4 d-flex">
                                         <div class="col-12 fs-5">
-                                            <label for="nickName" class="form-label text-secondary" :class="{'text-blueGreen':user.nickName && !errors['暱稱']}"><i class="bi bi-person-circle"></i> 暱稱</label>
+                                            <label for="nickName" class="form-label text-gray" :class="{'text-blueGreen':user.nickName && !errors['暱稱']}"><i class="bi bi-person-circle"></i> 暱稱</label>
                                             <VField
                                                 id="nickName"
                                                 name="暱稱"
@@ -59,7 +59,7 @@
                                             <ErrorMessage name="暱稱" class="invalid-feedback"></ErrorMessage>
                                         </div>
                                         <div class="col-12 fs-5">
-                                            <label for="email" class="form-label text-secondary" :class="{'text-blueGreen':user.email && !errors['信箱']}"><i class="bi bi-envelope-fill" ></i> 信箱</label>
+                                            <label for="email" class="form-label text-gray" :class="{'text-blueGreen':user.email && !errors['信箱']}"><i class="bi bi-envelope-fill" ></i> 信箱</label>
                                             <VField
                                                 id="email"
                                                 name="信箱"
@@ -74,7 +74,7 @@
                                             <ErrorMessage name="信箱" class="invalid-feedback"></ErrorMessage>
                                         </div>
                                         <div class="col-12 fs-5">
-                                            <label for="password" class="form-label text-secondary" :class="{'text-blueGreen':user.password && !errors['密碼']}"><i class="bi bi-unlock-fill"></i> 密碼</label>
+                                            <label for="password" class="form-label text-gray" :class="{'text-blueGreen':user.password && !errors['密碼']}"><i class="bi bi-unlock-fill"></i> 密碼</label>
                                             <VField
                                                 id="password"
                                                 name="密碼"
@@ -89,7 +89,7 @@
                                             <ErrorMessage name="密碼" class="invalid-feedback"></ErrorMessage>
                                         </div>
                                         <div class="col-12 fs-5">
-                                            <label for="confirmPassword" class="form-label text-secondary" :class="{'text-blueGreen':user.confirmPassword && !errors['確認密碼']}"><i class="bi bi-lock-fill" ></i> 確認密碼</label>
+                                            <label for="confirmPassword" class="form-label text-gray" :class="{'text-blueGreen':user.confirmPassword && !errors['確認密碼']}"><i class="bi bi-lock-fill" ></i> 確認密碼</label>
                                             <VField
                                                 id="confirmPassword"
                                                 name="確認密碼"

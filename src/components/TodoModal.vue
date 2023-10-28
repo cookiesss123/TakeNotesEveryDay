@@ -2,7 +2,7 @@
     <div class="modal fade" ref="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-md-down modal-xl">
             <div class="modal-content">
-            <div class="modal-header bg-green">
+            <div class="modal-header bg-primary">
                 <h5 class="modal-title text-white" id="exampleModalLabel">
                   <span v-if="status === 'new'">新增清單內容</span>
                   <span v-else-if="status === 'edit'">編輯清單內容</span>
@@ -25,12 +25,12 @@
 
                   <div class="input-group">
                     <input type="text" @keyup.enter="addTempTodo" class="form-control p-3" v-model="message" placeholder="待辦事項">
-                    <button type="button" class="btn btn-outline-green px-3" @click="addTempTodo"><i class="bi bi-plus-lg"></i></button>
+                    <button type="button" class="btn btn-outline-primary px-3" @click="addTempTodo"><i class="bi bi-plus-lg"></i></button>
                   </div>
 
                     <div class="mt-4">
                         <div class="card">
-                            <ul class="card-header d-flex list-unstyled justify-content-evenly bg-green">
+                            <ul class="card-header d-flex list-unstyled justify-content-evenly bg-primary">
                                 <li @click.prevent="page = '全部'" :class="{'border-bottom':page === '全部', 'border-3': page === '全部'}" ><a href="#" class="btn fs-5 fw-bold text-white border-0" >全部</a></li>
                                 <li @click.prevent="page = '待完成'" :class="{'border-bottom':page === '待完成', 'border-3': page === '待完成'}" ><a href="#" class="btn fs-5 fw-bold text-white border-0">待完成</a></li>
                                 <li @click.prevent="page = '已完成'" :class="{'border-bottom':page === '已完成', 'border-3': page === '已完成'}" ><a href="#" class="btn fs-5 fw-bold text-white border-0">已完成</a></li>
@@ -57,7 +57,7 @@
               </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                <button type="button" class="btn btn-gray" data-bs-dismiss="modal">關閉</button>
                 <button type="button" class="btn btn-primary" @click="updateTodo">
                   <span>確認</span>
                 </button>

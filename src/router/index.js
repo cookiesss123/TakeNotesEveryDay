@@ -26,16 +26,12 @@ const router = createRouter({
           component: () => import('../views/front/AccountingView.vue')
         },
         // {
-        //   path: 'todolists/:id',
-        //   component: () => import('../views/front/TodoList.vue')
+        //   path: 'signup',
+        //   component: () => import('../views/front/SignUp.vue')
         // },
         {
-          path: 'signup',
-          component: () => import('../views/front/SignUp.vue')
-        },
-        {
-          path: 'login',
-          component: () => import('../views/front/LoginView.vue')
+          path: 'loginSignup',
+          component: () => import('../views/front/LoginSignup.vue')
         }
       ]
     }

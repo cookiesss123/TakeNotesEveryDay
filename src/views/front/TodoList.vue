@@ -46,7 +46,7 @@ export default {
             }
           })
         } else {
-          this.$router.push('/login')
+          this.$router.push('/loginSignup')
           this.toastMessage('請登入', 'error')
         }
       })
@@ -76,8 +76,8 @@ export default {
             <div class="card bg-white text-white border-0 h-100">
               <img src="https://images.unsplash.com/photo-1586282023617-b844c180eb51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="h-100 card-img object-fit-cover" alt="清單示意圖">
               <div class="card-img-overlay d-flex">
-                <h3 class="card-title my-auto ms-auto text-green d-flex align-items-center"><span class="fw-bold">新增清單</span><a href="#" @click.prevent="openModal('new')" class="stretched-link btn btn-outline-green ms-3 fw-bold"><span class="fs-5">+</span></a></h3>
-                <p class="card-text mt-auto bg-green">簡短的清單或待辦事項</p>
+                <h3 class="card-title my-auto ms-auto text-primary d-flex align-items-center"><span class="fw-bold">新增清單</span><a href="#" @click.prevent="openModal('new')" class="stretched-link btn btn-outline-primary ms-3 fw-bold"><span class="fs-5">+</span></a></h3>
+                <p class="card-text mt-auto bg-primary">簡短的清單或待辦事項</p>
               </div>
             </div>
           </div>

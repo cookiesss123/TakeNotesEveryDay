@@ -2,7 +2,7 @@
     <div class="modal fade" ref="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-md-down modal-xl">
             <div class="modal-content">
-            <div class="modal-header bg-green d-flex">
+            <div class="modal-header bg-primary d-flex">
                 <h5 class="modal-title text-white ms-auto" id="exampleModalLabel">
                   {{ calendarId }}
                 </h5>
@@ -36,7 +36,7 @@
                     <input type="text" id="work" class="form-control" v-model="message" alt="" @keyup.enter="addCalendar">
                   </div>
                   <div class="col-lg-1 d-flex flex-column mt-lg-auto">
-                    <button @click="addCalendar" type="button" class="btn btn-outline-green ms-auto">+</button>
+                    <button @click="addCalendar" type="button" class="btn btn-outline-primary ms-auto">+</button>
                   </div>
                 </div>
                   <h4 class="text-center" style="background-color: #c2e8d9;">上午行程</h4>
@@ -63,7 +63,7 @@
                           <span style="word-break: break-all;" :class="{'text-decoration-line-through': work.checked}">{{work.message}}</span>
                         </td>
                         <td >
-                          <div v-if="!work.checked" class="checkbox border-green border bg-white rounded-1 cursor-pointer" @click="work.checked = true"></div>
+                          <div v-if="!work.checked" class="checkbox border-primary border bg-white rounded-1 cursor-pointer" @click="work.checked = true"></div>
                           <i v-else-if="work.checked" @click="work.checked = false" class="bi bi-check2 cursor-pointer" ></i>
                         </td>
                         <td>
@@ -97,7 +97,7 @@
                           <span style="word-break: break-all;" :class="{'text-decoration-line-through': work.checked}">{{work.message}}</span>
                         </td>
                         <td >
-                          <div v-if="!work.checked" class="checkbox border-green border bg-white rounded-1 cursor-pointer" @click="work.checked = true"></div>
+                          <div v-if="!work.checked" class="checkbox border-primary border bg-white rounded-1 cursor-pointer" @click="work.checked = true"></div>
                           <i v-else-if="work.checked" @click="work.checked = false" class="bi bi-check2 cursor-pointer" ></i>
                         </td>
                         <td>
@@ -110,7 +110,7 @@
               </section>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                <button type="button" class="btn btn-gray" data-bs-dismiss="modal">關閉</button>
                 <button type="button" class="btn btn-primary" @click="updatedCalendar">
                   <span>確認</span>
                 </button>

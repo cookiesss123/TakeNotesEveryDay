@@ -35,7 +35,7 @@
                 </li>
             </ul>
             <div class="card">
-                <div class="card-header bg-green" :style="`background-image: url('${bgImg}')`" style="background-repeat: no-repeat; background-size: cover; background-position: ;">
+                <div class="card-header bg-primary" :style="`background-image: url('${bgImg}')`" style="background-repeat: no-repeat; background-size: cover; background-position: ;">
                     <div class="col-lg-1 d-flex align-items-center" style="margin: 0 auto;">
                         <select name="" id="" v-model="selectMonth" class="col-lg-3 form-select fs-4 text-center border-0 text-white" style="background-color: transparent;">
                             <option value="1月" selected :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" >1月</option>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="card-body">
                     <table class="table text-center lgCalendar">
-                        <thead class="h5 border-bottom border-green">
+                        <thead class="h5 border-bottom border-primary">
                             <tr>
                                 <th width="100">日</th>
                                 <th width="100">一</th>
@@ -74,7 +74,7 @@
                                 <!-- 沒有的天數用空白取代 -->
                                 <td v-for="day in weekdayIndex" :key="day + 400" class="bg-white" style="pointer-events:none;"></td>
                                 <template v-for="(day, index) in (7 - weekdayIndex)" :key="index + 5503">
-                                    <td @click="openModal(day)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`}">{{ day }}
+                                    <td @click="openModal(day)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`}">{{ day }}
                                     <template v-for="(calendar, index) in calendars" :key="index">
                                         <div v-if="index === `${selectYear}-${selectMonth.split('月')[0]}-${day}`">
                                             <ul v-for="(item, index) in calendar" :key="index + 59" class="list-unstyled">
@@ -94,7 +94,7 @@
                             <!-- 第二行 -->
                             <tr >
                                 <template v-for="(day, index) in 7" :key="index + 5100">
-                                    <td @click="openModal(day + 7 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`}">{{ day + 7 - weekdayIndex }}
+                                    <td @click="openModal(day + 7 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`}">{{ day + 7 - weekdayIndex }}
                                     <template v-for="(calendar, index) in calendars" :key="index">
                                         <div  v-if="index === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`">
                                             <ul v-for="(item, index) in calendar" :key="index + 59" class="list-unstyled">
@@ -114,7 +114,7 @@
                             <!-- 第三行 -->
                             <tr >
                                 <template v-for="(day, index) in 7" :key="index + 5200" >
-                                    <td @click="openModal(day + 14 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`}">{{ day + 14 - weekdayIndex }}
+                                    <td @click="openModal(day + 14 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`}">{{ day + 14 - weekdayIndex }}
                                     <template v-for="(calendar, index) in calendars" :key="index">
                                         <div  v-if="index === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`">
                                             <ul v-for="(item, index) in calendar" :key="index + 59" class="list-unstyled">
@@ -134,7 +134,7 @@
                              <template v-if="(dayNum >= 30 && weekdayIndex === 6) || (dayNum === 31 && weekdayIndex === 5) && (new Date().getMonth() + 1) !== 2">
                                 <tr >
                                     <template  v-for="(day, index) in 7" :key="index + 5300" >
-                                        <td @click="openModal(day + 21 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`}">{{ day + 21 - weekdayIndex }}
+                                        <td @click="openModal(day + 21 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`}">{{ day + 21 - weekdayIndex }}
                                         <template v-for="(calendar, index) in calendars" :key="index">
                                             <div  v-if="index === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`">
                                                 <ul v-for="(item, index) in calendar" :key="index + 59" class="list-unstyled">
@@ -153,7 +153,7 @@
                                 </tr>
                                 <tr >
                                     <template  v-for="(day, index) in 7" :key="index + 5300">
-                                        <td @click="openModal(day + 28 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`}">{{ day + 28 - weekdayIndex }}
+                                        <td @click="openModal(day + 28 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`}">{{ day + 28 - weekdayIndex }}
                                         <template v-for="(calendar, index) in calendars" :key="index">
                                             <div  v-if="index === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`">
                                                 <ul v-for="(item, index) in calendar" :key="index + 59" class="list-unstyled">
@@ -171,7 +171,7 @@
                                 </tr>
                                 <tr >
                                     <template v-for="(day, index) in (dayNum - 28 -( 7 - weekdayIndex))" :key="index + 5400">
-                                        <td @click="openModal(day + 28 + 7 - weekdayIndex)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`}">{{ day + 28 + 7 - weekdayIndex }}
+                                        <td @click="openModal(day + 28 + 7 - weekdayIndex)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`}">{{ day + 28 + 7 - weekdayIndex }}
                                         <template v-for="(calendar, index) in calendars" :key="index">
                                             <div  v-if="index === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`">
                                                 <ul v-for="(item, index) in calendar" :key="index + 59" class="list-unstyled">
@@ -193,7 +193,7 @@
                             <template v-else>
                                 <tr >
                                     <template v-for="(day, index) in 7" :key="index + 5300">
-                                        <td :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`}" @click="openModal(day + 21 - weekdayIndex)">{{ day + 21 - weekdayIndex }}
+                                        <td :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`}" @click="openModal(day + 21 - weekdayIndex)">{{ day + 21 - weekdayIndex }}
                                         <template v-for="(calendar, index) in calendars" :key="index">
                                             <div  v-if="index === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`">
                                                 <ul v-for="(item, index) in calendar" :key="index + 59" class="list-unstyled">
@@ -211,7 +211,7 @@
                                 </tr>
                                 <tr  style="max-height: 150px;">
                                     <template v-for="(day, index) in (dayNum - 21 -( 7 - weekdayIndex))" :key="index + 5400">
-                                        <td @click="openModal(day + 21 + 7 - weekdayIndex)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`}">{{ day + 21 + 7 - weekdayIndex }}
+                                        <td @click="openModal(day + 21 + 7 - weekdayIndex)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`}">{{ day + 21 + 7 - weekdayIndex }}
                                         <template v-for="(calendar, index) in calendars" :key="index">
                                             <div  v-if="index === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`">
                                                 <ul v-for="(item, index) in calendar" :key="index + 59" class="list-unstyled">
@@ -278,7 +278,7 @@ export default {
           })
         } else {
           this.uid = null
-          this.$router.push('/login')
+          this.$router.push('/loginSignup')
           this.toastMessage('請登入', 'error')
         }
       })

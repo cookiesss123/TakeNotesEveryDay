@@ -3,19 +3,19 @@
         <h2 class="text-center mb-3">記帳</h2>
         <ul class="list-unstyled mb-5 fs-5 d-lg-flex" style="margin: 0 auto;">
             <li class="me-5 mb-3">
-                <a href="#" class="text-decoration-none link-green" @click.prevent="pageStatus = '收支紀錄'">
+                <a href="#" class="text-decoration-none link-primary" @click.prevent="pageStatus = '收支紀錄'">
                     <i class="bi bi-caret-right-fill"></i>
                     <span>收支紀錄</span>
                 </a>
             </li>
             <li class="me-5 mb-3">
-                <a href="#" class="text-decoration-none link-green" @click.prevent="pageStatus = '每月費用、收益總計'">
+                <a href="#" class="text-decoration-none link-primary" @click.prevent="pageStatus = '每月費用、收益總計'">
                     <i class="bi bi-caret-right-fill"></i>
                     <span>每月費用、收益總計</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="text-decoration-none link-green" @click.prevent="pageStatus = '每年費用、收益總計'">
+                <a href="#" class="text-decoration-none link-primary" @click.prevent="pageStatus = '每年費用、收益總計'">
                     <i class="bi bi-caret-right-fill"></i>
                     <span>每年費用、收益總計</span>
                 </a>
@@ -27,7 +27,7 @@
               <option v-for="(i, index) in 15" :key="i + 99" :value="2023 + index" :selected="new Date().getFullYear() === 2023 + index">{{2023 + index}}</option>
             </select>
             <div class="card mt-4">
-                <div class="card-header bg-green"  :style="`background-image: url('${bgImg}')`">
+                <div class="card-header bg-primary"  :style="`background-image: url('${bgImg}')`">
                     <div class="col-lg-3 d-flex align-items-center mx-auto">
                         <select name="" id="" v-model="selectMonth" class="col-lg-3 form-select fs-4 text-center border-0 text-white" style="appearance: none; background: url('') no-repeat right center;">
 
@@ -39,7 +39,7 @@
                 </div>
                 <div class="card-body">
                     <table class="table text-center align-middle calendar">
-                        <thead class="h5 border-bottom border-green">
+                        <thead class="h5 border-bottom border-primary">
                             <tr>
                                 <th >日</th>
                                 <th >一</th>
@@ -56,7 +56,7 @@
                                 <!-- 沒有的天數用空白取代 -->
                                 <td v-for="day in weekdayIndex" :key="day + 400" class="bg-white" style="pointer-events:none;"></td>
                                 <template v-for="(day, index) in (7 - weekdayIndex)" :key="index + 5503">
-                                    <td @click="openModal(day)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'bg-lightBlue': date === day}">{{ day }}
+                                    <td @click="openModal(day)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day}`, 'bg-lightBlue': date === day}">{{ day }}
                                         <template v-for="record in recordedListDate" :key="record">
                                             <i v-if="record === `${selectYear}-${selectMonth.split('月')[0]}-${day}`" class="bi bi-dot d-block"></i>
                                         </template>
@@ -67,7 +67,7 @@
                             <!-- 第二行 -->
                             <tr height="50">
                                 <template v-for="(day, index) in 7" :key="index + 5100">
-                                    <td @click="openModal(day + 7 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 7 - weekdayIndex}">{{ day + 7 - weekdayIndex }}
+                                    <td @click="openModal(day + 7 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 7 - weekdayIndex}">{{ day + 7 - weekdayIndex }}
                                         <template v-for="record in recordedListDate" :key="record">
                                             <i v-if="record === `${selectYear}-${selectMonth.split('月')[0]}-${day + 7 - weekdayIndex}`" class="bi bi-dot d-block"></i>
                                         </template>
@@ -78,7 +78,7 @@
                             <!-- 第三行 -->
                             <tr height="50">
                                 <template v-for="(day, index) in 7" :key="index + 5200" >
-                                    <td @click="openModal(day + 14 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 14 - weekdayIndex}">{{ day + 14 - weekdayIndex }}
+                                    <td @click="openModal(day + 14 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 14 - weekdayIndex}">{{ day + 14 - weekdayIndex }}
                                         <template v-for="record in recordedListDate" :key="record">
                                             <i v-if="record === `${selectYear}-${selectMonth.split('月')[0]}-${day + 14 - weekdayIndex}`" class="bi bi-dot d-block"></i>
                                         </template>
@@ -89,7 +89,7 @@
                               <template v-if="(dayNum >= 30 && weekdayIndex === 6) || (dayNum === 31 && weekdayIndex === 5) && (new Date().getMonth() + 1) !== 2">
                                 <tr height="50">
                                     <template  v-for="(day, index) in 7" :key="index + 5300" >
-                                        <td @click="openModal(day + 21 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 21 - weekdayIndex}">{{ day + 21 - weekdayIndex }}
+                                        <td @click="openModal(day + 21 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 21 - weekdayIndex}">{{ day + 21 - weekdayIndex }}
                                         <template v-for="record in recordedListDate" :key="record">
                                             <i v-if="record === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`" class="bi bi-dot d-block"></i>
                                         </template>
@@ -99,7 +99,7 @@
                                 </tr>
                                 <tr height="50">
                                     <template  v-for="(day, index) in 7" :key="index + 5300">
-                                        <td @click="openModal(day + 28 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 28 - weekdayIndex}">{{ day + 28 - weekdayIndex }}
+                                        <td @click="openModal(day + 28 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 28 - weekdayIndex}">{{ day + 28 - weekdayIndex }}
                                         <template v-for="record in recordedListDate" :key="record">
                                             <i v-if="record === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 - weekdayIndex}`" class="bi bi-dot d-block"></i>
                                         </template>
@@ -108,7 +108,7 @@
                                 </tr>
                                 <tr height="50">
                                     <template v-for="(day, index) in (dayNum - 28 -( 7 - weekdayIndex))" :key="index + 5400">
-                                        <td @click="openModal(day + 28 + 7 - weekdayIndex)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 28 + 7 - weekdayIndex}">{{ day + 28 + 7 - weekdayIndex }}
+                                        <td @click="openModal(day + 28 + 7 - weekdayIndex)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 28 + 7 - weekdayIndex}">{{ day + 28 + 7 - weekdayIndex }}
                                         <template v-for="record in recordedListDate" :key="record">
                                             <i v-if="record === `${selectYear}-${selectMonth.split('月')[0]}-${day + 28 + 7 - weekdayIndex}`" class="bi bi-dot d-block"></i>
                                         </template>
@@ -121,7 +121,7 @@
                             <template v-else>
                                 <tr height="50">
                                     <template v-for="(day, index) in 7" :key="index + 5300">
-                                        <td :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 21 - weekdayIndex}" @click="openModal(day + 21 - weekdayIndex)">{{ day + 21 - weekdayIndex }}
+                                        <td :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 21 - weekdayIndex}" @click="openModal(day + 21 - weekdayIndex)">{{ day + 21 - weekdayIndex }}
                                         <template v-for="record in recordedListDate" :key="record">
                                             <i v-if="record === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`" class="bi bi-dot d-block"></i>
                                         </template>
@@ -130,7 +130,7 @@
                                 </tr>
                                 <tr height="50" style="max-height: 150px;">
                                     <template v-for="(day, index) in (dayNum - 21 -( 7 - weekdayIndex))" :key="index + 5400">
-                                        <td @click="openModal(day + 21 + 7 - weekdayIndex)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 21 + 7 - weekdayIndex}">{{ day + 21 + 7 - weekdayIndex }}
+                                        <td @click="openModal(day + 21 + 7 - weekdayIndex)"  :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'border-primary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'bg-secondary': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 21 + 7 - weekdayIndex}">{{ day + 21 + 7 - weekdayIndex }}
                                         <template v-for="record in recordedListDate" :key="record">
                                             <i v-if="record === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 + 7 - weekdayIndex}`" class="bi bi-dot d-block"></i>
                                         </template>
@@ -171,7 +171,7 @@
                   </select>
                   <input type="text" class="form-control" placeholder="收入名稱" v-model="titleR">
                   <input type="number" class="form-control" placeholder="金額" @keydown="handleKeyDown($event)" @keyup.enter="record('revenue')" v-model.number="moneyR">
-                  <button type="button" class="btn btn-outline-green" @click="record('revenue')"><i class="bi bi-plus-lg"></i></button>
+                  <button type="button" class="btn btn-outline-primary" @click="record('revenue')"><i class="bi bi-plus-lg"></i></button>
               </div>
               <div class="card">
                   <div class="card-header">
@@ -224,8 +224,8 @@
                     <option v-for="i in 12" :key="i + 7345" :value="i">{{i}} 月</option>
                 </select>
                 <div class="d-flex">
-                  <button type="button" class="btn border" :disabled="monthlySelectMonth === 1" @click="monthlySelectMonth = monthlySelectMonth - 1"><i class="bi bi-caret-up-fill text-green"></i></button>
-                  <button type="button" class="btn border ms-3" :disabled="monthlySelectMonth === 12" @click="monthlySelectMonth = monthlySelectMonth + 1"><i class="bi bi-caret-down-fill text-green"></i></button>
+                  <button type="button" class="btn border" :disabled="monthlySelectMonth === 1" @click="monthlySelectMonth = monthlySelectMonth - 1"><i class="bi bi-caret-up-fill text-primary"></i></button>
+                  <button type="button" class="btn border ms-3" :disabled="monthlySelectMonth === 12" @click="monthlySelectMonth = monthlySelectMonth + 1"><i class="bi bi-caret-down-fill text-primary"></i></button>
                 </div>
             </div>
 
@@ -282,8 +282,8 @@
             <select name="" class="form-select fs-3 text-center border-0" v-model="annualSelectYear" style="width: 150px;">
               <option v-for="(i, index) in 15" :key="i" :value="2023 + index">{{2023 + index}} 年</option>
             </select>
-            <button type="button" class="btn border" :disabled="annualSelectYear === 2023" @click="annualSelectYear = annualSelectYear - 1"><i class="bi bi-caret-up-fill text-green"></i></button>
-            <button type="button" class="btn border ms-3" :disabled="annualSelectYear === 2036" @click="annualSelectYear = annualSelectYear + 1"><i class="bi bi-caret-down-fill text-green"></i></button>
+            <button type="button" class="btn border" :disabled="annualSelectYear === 2023" @click="annualSelectYear = annualSelectYear - 1"><i class="bi bi-caret-up-fill text-primary"></i></button>
+            <button type="button" class="btn border ms-3" :disabled="annualSelectYear === 2036" @click="annualSelectYear = annualSelectYear + 1"><i class="bi bi-caret-down-fill text-primary"></i></button>
           </div>
 
             <div class="row row-cols-lg-2 gy-5">
@@ -413,7 +413,7 @@ export default {
           })
         } else {
           this.uid = null
-          this.$router.push('/login')
+          this.$router.push('/loginSignup')
           this.toastMessage('請登入', 'error')
         }
       })

@@ -298,8 +298,10 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary:       $blue !default;
-$secondary:     $gray-600 !default;
+$primary:       #62776f; // $blue !default;
+$secondary:     #def6ed; // $gray-600 !default;
+$blueGreen:     #73a079;
+$gray:          $gray-600; 
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
@@ -312,15 +314,17 @@ $dark:          $gray-900 !default;
 $theme-colors: (
   "primary":    $primary,
   "secondary":  $secondary,
+  "blueGreen":  $blueGreen,
+  "gray":  $gray,
   "success":    $success,
   "info":       $info,
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
   "dark":       $dark,
-  "green": #62776f,  // bg custom
-  "blueGreen": #73a079, // 暫時不刪 因為這是 登入註冊的顏色
-  "lightGreen": #def6ed,
+  // "green": #62776f,  // bg custom
+  // "blueGreen": #73a079, // 暫時不刪 因為這是 登入註冊的顏色
+  // "lightGreen": #def6ed,
   "green-4": #73a079,
   "green-5": #56a377,
   "purple": #8b8dae,
@@ -397,7 +401,7 @@ $enable-cssgrid:              false !default;
 $enable-button-pointers:      true !default;
 $enable-rfs:                  true !default;
 $enable-validation-icons:     true !default;
-$enable-negative-margins:     false !default;
+$enable-negative-margins:     true; // false !default; custom
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
 
