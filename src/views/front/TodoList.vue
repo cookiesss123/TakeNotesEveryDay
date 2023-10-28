@@ -10,7 +10,7 @@ export default {
   data () {
     return {
       uid: '',
-      todoLists: {},
+      todoLists: [],
       todoId: '',
       todoDeleteId: '',
       searchTitle: '',
@@ -23,18 +23,6 @@ export default {
   },
   methods: {
     ...mapActions(utilityStore, ['toastMessage']),
-
-    checkLogin () {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          this.uid = user.uid
-        } else {
-          this.uid = null
-          this.$router.push('/login')
-          this.toastMessage('請登入', 'error')
-        }
-      })
-    },
     openModal (id) {
       this.todoId = id
     },
@@ -49,22 +37,26 @@ export default {
           this.uid = user.uid
           const dataRef = ref(db, `todoLists/${this.uid}`)
           onValue(dataRef, snapshot => {
-            this.todoLists = snapshot.val()
+            const todoLists = snapshot.val()
+            this.todoLists = Object.keys(todoLists).map(key => {
+              todoLists[key].id = key
+              return todoLists[key]
+            })
           })
         } else {
-          this.uid = null
+          this.$router.push('/login')
+          this.toastMessage('請登入', 'error')
         }
       })
     }
   },
   mounted () {
-    this.checkLogin()
     this.getTodoLists()
   },
   computed: {
     searchLists () {
-      return Object.entries(this.todoLists).filter(list => {
-        return list[1].title.match(this.searchTitle)
+      return this.todoLists.filter(list => {
+        return list.title.match(this.searchTitle)
       })
     }
   }
@@ -80,7 +72,7 @@ export default {
         <div class="row row-cols-lg-2 row-cols-1 gy-4">
           <div class="col menu">
             <div class="card bg-white text-white border-0 h-100">
-              <img src="https://images.unsplash.com/photo-1586282023617-b844c180eb51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="h-100 card-img" alt="..." style="object-fit: cover;">
+              <img src="https://images.unsplash.com/photo-1586282023617-b844c180eb51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="h-100 card-img object-fit-cover" alt="清單示意圖">
               <div class="card-img-overlay d-flex">
                 <h3 class="card-title my-auto ms-auto text-green d-flex align-items-center"><span class="fw-bold">新增清單</span><a href="#" @click.prevent="openModal('new')" class="stretched-link btn btn-outline-green ms-3 fw-bold"><span class="fs-5">+</span></a></h3>
                 <p class="card-text mt-auto bg-green">簡短的清單或待辦事項</p>
@@ -95,9 +87,9 @@ export default {
               </div>
               <ul class="list-group list-group-flush">
                 <template v-if="todoLists">
-                  <li v-for="todo in searchLists" :key="todo[0]" class="list-group-item d-flex align-items-center" style="cursor: pointer;">
-                    <span @click.prevent="openModal(todo[0])" class="w-100">{{ todo[1].title }}</span>
-                    <a href="#" class="btn ms-auto" @click.prevent="openDeleteModal(todo[0])"><i class="bi bi-x-lg"></i></a>
+                  <li v-for="todo in searchLists" :key="todo.id" class="list-group-item d-flex align-items-center cursor-pointer">
+                    <span @click.prevent="openModal(todo.id)" class="w-100">{{ todo.title }}</span>
+                    <a href="#" class="btn ms-auto" @click.prevent="openDeleteModal(todo.id)"><i class="bi bi-x-lg"></i></a>
                   </li>
                 </template>
               </ul>
@@ -110,8 +102,3 @@ export default {
     <DeleteTodoModal :uid="uid" :id="todoDeleteId" :open-delete-modal="openDeleteModal"></DeleteTodoModal>
   </div>
 </template>
-<style>
-  .list-group li:hover{
-    background-color: rgb(234, 250, 247);
-  }
-</style>
