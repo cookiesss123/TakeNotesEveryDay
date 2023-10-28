@@ -2,7 +2,7 @@
 import { db, auth } from '../../firebase/db'
 import { ref, onValue } from 'firebase/database'
 import { onAuthStateChanged } from 'firebase/auth'
-import todoStore from '../../stores/todo'
+import utilityStore from '../../stores/utilities'
 import { mapActions } from 'pinia'
 import TodoModal from '../../components/TodoModal.vue'
 import DeleteTodoModal from '../../components/DeleteTodoModal.vue'
@@ -23,7 +23,7 @@ export default {
     RouterLink
   },
   methods: {
-    ...mapActions(todoStore, ['toastMessage']),
+    ...mapActions(utilityStore, ['toastMessage']),
 
     checkLogin () {
       onAuthStateChanged(auth, (user) => {

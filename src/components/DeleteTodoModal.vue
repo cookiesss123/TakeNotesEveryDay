@@ -31,7 +31,7 @@ import modalMixin from '../mixins/modalMixin'
 import { db } from '../firebase/db'
 import { ref, remove, onValue } from 'firebase/database'
 import { mapActions } from 'pinia'
-import todoStore from '../stores/todo'
+import utilityStore from '../stores/utilities'
 export default {
   data () {
     return {
@@ -42,7 +42,7 @@ export default {
   mixins: [modalMixin],
   props: ['id', 'openDeleteModal', 'uid'],
   methods: {
-    ...mapActions(todoStore, ['toastMessage']),
+    ...mapActions(utilityStore, ['toastMessage']),
     deleteTodo () {
       remove(ref(db, `todoLists/${this.uid}/${this.deleteId}`))
       this.toastMessage('刪除清單')

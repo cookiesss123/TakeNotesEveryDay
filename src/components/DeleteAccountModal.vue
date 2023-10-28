@@ -34,7 +34,7 @@ import modalMixin from '../mixins/modalMixin'
 import { db } from '../firebase/db'
 import { ref, onValue, set } from 'firebase/database'
 import { mapActions } from 'pinia'
-import todoStore from '../stores/todo'
+import utilityStore from '../stores/utilities'
 export default {
   data () {
     return {
@@ -46,7 +46,7 @@ export default {
   mixins: [modalMixin],
   props: ['id', 'openDeleteModal', 'uid', 'index', 'numberComma'],
   methods: {
-    ...mapActions(todoStore, ['toastMessage']),
+    ...mapActions(utilityStore, ['toastMessage']),
     deleteRecord () {
       this.tempAccountList.splice(this.index, 1)
       const reference = ref(db, `accounts/${this.uid}/${this.deleteId}`)

@@ -1,18 +1,11 @@
 .lgCalendar tr td{
     height: 80px;
 }
-
-.CalendarModal{
-  font-size: 10px;
-}
 .CalendarModal .rounded-circle{
   height: 10px;
   width: 10px;
 }
 
-.CalendarModal i{
-  font-size: 15px;
-}
 .CalendarModal .checkbox{
   width: 15px; 
   height: 15px;
@@ -22,16 +15,9 @@
   .lgCalendar tr td{
     height: 150px;
   }
-  .CalendarModal{
-    font-size: 16px;
-  }
   .CalendarModal .rounded-circle{
     height: 20px;
     width: 20px;
-  }
-  // 打勾 x
-  .CalendarModal i{
-    font-size: 24px;
   }
   .CalendarModal .checkbox{
     width: 25px; 

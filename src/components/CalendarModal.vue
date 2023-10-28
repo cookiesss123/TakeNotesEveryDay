@@ -40,14 +40,14 @@
                   </div>
                 </div>
                   <h4 class="text-center" style="background-color: #c2e8d9;">上午行程</h4>
-                  <table class="table table-borderless CalendarModal">
+                  <table class="table table-borderless CalendarModal fs-10 fs-lg-6">
                     <thead style="border-bottom: 1px solid #dee2e6;">
                       <tr>
                         <th>時間</th>
-                        <th style="white-space:nowrap;">註記</th>
+                        <th class="white-space-nowrap">註記</th>
                         <th>行程</th>
-                        <th style="white-space:nowrap;">完成</th>
-                        <th style="white-space:nowrap;">刪除</th>
+                        <th class="white-space-nowrap">完成</th>
+                        <th class="white-space-nowrap">刪除</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -63,45 +63,45 @@
                           <span style="word-break: break-all;" :class="{'text-decoration-line-through': work.checked}">{{work.message}}</span>
                         </td>
                         <td >
-                          <div v-if="!work.checked" class="checkbox border-green border bg-white rounded-1 " style="cursor: pointer;" @click="work.checked = true"></div>
-                          <i v-else-if="work.checked" @click="work.checked = false" class="bi bi-check2" style="cursor: pointer;"></i>
+                          <div v-if="!work.checked" class="checkbox border-green border bg-white rounded-1 cursor-pointer" @click="work.checked = true"></div>
+                          <i v-else-if="work.checked" @click="work.checked = false" class="bi bi-check2 cursor-pointer" ></i>
                         </td>
                         <td>
-                          <i class="bi bi-x " @click="tempCalendar.splice(index, 1)" style="cursor: pointer;"></i>
+                          <i class="bi bi-x fs-15 fs-lg-4 cursor-pointer" @click="tempCalendar.splice(index, 1)"></i>
                         </td>
                       </tr>
                       </template>
                     </tbody>
                   </table>
                   <h4 class="text-center" style="background-color: #c2e8d9;">下午行程</h4>
-                  <table class="table table-borderless CalendarModal">
+                  <table class="table table-borderless CalendarModal fs-10 fs-lg-6">
                     <thead style="border-bottom: 1px solid #dee2e6;">
                       <tr>
                         <th>時間</th>
-                        <th style="white-space:nowrap;">註記</th>
+                        <th class="white-space-nowrap">註記</th>
                         <th>行程</th>
-                        <th style="white-space:nowrap;">完成</th>
-                        <th style="white-space:nowrap;">刪除</th>
+                        <th class="white-space-nowrap">完成</th>
+                        <th class="white-space-nowrap">刪除</th>
                       </tr>
                     </thead>
                     <tbody>
                       <template v-for="(work, index) in tempCalendar" :key="index + 4910">
                         <tr v-if="work.time.split('- ')[1].split(':')[0] > 12">
-                        <td class="">
+                        <td>
                           {{work.time}}
                         </td>
                         <td>
                           <div class="rounded-circle " :class="{'bg-danger': work.mark === 'danger', 'bg-warning': work.mark === 'warning', 'bg-success': work.mark === 'success'}" ></div>
                         </td>
-                        <td  class="">
+                        <td>
                           <span style="word-break: break-all;" :class="{'text-decoration-line-through': work.checked}">{{work.message}}</span>
                         </td>
                         <td >
-                          <div v-if="!work.checked" class="checkbox border-green border bg-white rounded-1 " style="cursor: pointer;" @click="work.checked = true"></div>
-                          <i v-else-if="work.checked" @click="work.checked = false" class="bi bi-check2" style="cursor: pointer;"></i>
+                          <div v-if="!work.checked" class="checkbox border-green border bg-white rounded-1 cursor-pointer" @click="work.checked = true"></div>
+                          <i v-else-if="work.checked" @click="work.checked = false" class="bi bi-check2 cursor-pointer" ></i>
                         </td>
                         <td>
-                          <i class="bi bi-x " @click="tempCalendar.splice(index, 1)" style="cursor: pointer;"></i>
+                          <i class="bi bi-x fs-15 fs-lg-4 cursor-pointer" @click="tempCalendar.splice(index, 1)"></i>
                         </td>
                       </tr>
                       </template>
@@ -123,7 +123,7 @@
 import modalMixin from '../mixins/modalMixin'
 import { db } from '../firebase/db'
 import { ref, set, onValue } from 'firebase/database'
-import todoStore from '../stores/todo'
+import utilityStore from '../stores/utilities'
 import { mapActions } from 'pinia'
 
 export default {
@@ -140,7 +140,7 @@ export default {
   mixins: [modalMixin],
   props: ['uid', 'id', 'openModal', 'date'],
   methods: {
-    ...mapActions(todoStore, ['toastMessage']),
+    ...mapActions(utilityStore, ['toastMessage']),
     addCalendar () {
       if (this.message === '' || !this.time) {
         return

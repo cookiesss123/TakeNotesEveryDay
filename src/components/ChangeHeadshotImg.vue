@@ -17,7 +17,7 @@
 <script>
 import modalMixin from '../mixins/modalMixin'
 import { mapActions } from 'pinia'
-import todoStore from '../stores/todo'
+import utilityStore from '../stores/utilities'
 // import { db, auth } from '../firebase/db'
 // import { onAuthStateChanged } from 'firebase/auth'
 // import { ref, onValue } from 'firebase/database'
@@ -30,7 +30,7 @@ export default {
   props: ['uid', 'user'],
   mixins: [modalMixin],
   methods: {
-    ...mapActions(todoStore, ['toastMessage'])
+    ...mapActions(utilityStore, ['toastMessage'])
   },
   mounted () {
   },

@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import './assets/all.scss'
+import './assets/scss/all.scss'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
 import VueSweetalert2 from 'vue-sweetalert2'

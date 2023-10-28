@@ -70,7 +70,7 @@
 import modalMixin from '../mixins/modalMixin'
 import { db } from '../firebase/db'
 import { ref, push, set, onValue, update } from 'firebase/database'
-import todoStore from '../stores/todo'
+import utilityStore from '../stores/utilities'
 import { mapActions } from 'pinia'
 
 export default {
@@ -92,7 +92,7 @@ export default {
   mixins: [modalMixin],
   props: ['uid', 'id', 'openModal'],
   methods: {
-    ...mapActions(todoStore, ['toastMessage']),
+    ...mapActions(utilityStore, ['toastMessage']),
     addTempTodo () {
       if (this.message === '') {
         return

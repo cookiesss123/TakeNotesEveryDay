@@ -242,7 +242,7 @@
 <script>
 import { onAuthStateChanged } from 'firebase/auth'
 import CalendarModal from '../../components/CalendarModal.vue'
-import todoStore from '../../stores/todo'
+import utilityStore from '../../stores/utilities'
 import { mapActions } from 'pinia'
 import { ref, onValue } from 'firebase/database'
 import { auth, db } from '../../firebase/db'
@@ -267,7 +267,7 @@ export default {
     CalendarModal
   },
   methods: {
-    ...mapActions(todoStore, ['toastMessage']),
+    ...mapActions(utilityStore, ['toastMessage']),
     getCalendar () {
       onAuthStateChanged(auth, (user) => {
         if (user) {

@@ -22,41 +22,16 @@
             </li>
         </ul>
         <div v-if="pageStatus === '收支紀錄'" class="row row-cols-lg-2 gx-5">
-            <section class=" col">
-            <div class="mb-4" style="margin: 0 auto;">
-                <select name="" id="" class="form-select fs-3 text-center border-0" v-model="selectYear" style="width: 150px; margin: 0 auto;">
-                    <option value="2023" selected>2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                    <option value="2027">2027</option>
-                    <option value="2028">2028</option>
-                    <option value="2029">2029</option>
-                    <option value="2030">2030</option>
-                    <option value="2031">2031</option>
-                    <option value="2032">2032</option>
-                    <option value="2033">2033</option>
-                    <option value="2034">2034</option>
-                    <option value="2035">2035</option>
-                    <option value="2036">2036</option>
-                </select>
-            </div>
-            <div class="card">
+          <section class="col">
+            <select name="" id="" class="form-select fs-3 text-center border-0 mx-auto" v-model="selectYear" style="width: 150px;">
+              <option v-for="(i, index) in 15" :key="i + 99" :value="2023 + index" :selected="new Date().getFullYear() === 2023 + index">{{2023 + index}}</option>
+            </select>
+            <div class="card mt-4">
                 <div class="card-header bg-green"  :style="`background-image: url('${bgImg}')`">
-                    <div class="col-lg-2 d-flex align-items-center" style="margin: 0 auto;">
-                        <select name="" id="" v-model="selectMonth" class="col-lg-3 form-select fs-4 text-center border-0 text-white" style="appearance: none; background: url('') no-repeat right center; background-color: transparent;">
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="1月" selected>1月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="2月">2月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="3月">3月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="4月">4月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="5月">5月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="6月">6月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="7月">7月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="8月">8月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="9月">9月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="10月">10月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="11月">11月</option>
-                            <option :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" style="appearance: none; background: url('') no-repeat right center;" value="12月">12月</option>
+                    <div class="col-lg-3 d-flex align-items-center mx-auto">
+                        <select name="" id="" v-model="selectMonth" class="col-lg-3 form-select fs-4 text-center border-0 text-white" style="appearance: none; background: url('') no-repeat right center;">
+
+                            <option v-for="i in 12" :key="i + 902" :class="{'bg-purple': selectMonth === '1月', 'bg-blue': selectMonth === '2月', 'bg-pink': selectMonth === '3月', 'bg-green-4': selectMonth === '4月', 'bg-green-5': selectMonth === '5月', 'bg-yellow': selectMonth === '6月', 'bg-orange': selectMonth === '7月', 'bg-red': selectMonth === '8月', 'bg-darkRed': selectMonth === '9月', 'bg-darkOrange': selectMonth === '10月', 'bg-brown': selectMonth === '11月', 'bg-darkBlue': selectMonth === '12月'}" :value="`${i}月`">{{ i }} 月</option>
                         </select>
                         <button type="button" class="btn border" :disabled="selectMonth === '1月'" @click="selectMonth = `${Number(selectMonth.split('月')[0]) - 1}月`"><i class="bi bi-caret-up-fill text-white"></i></button>
                         <button type="button" class="btn border ms-3" :disabled="selectMonth === '12月'" @click="selectMonth = `${Number(selectMonth.split('月')[0]) + 1}月`"><i class="bi bi-caret-down-fill text-white"></i></button>
@@ -75,9 +50,9 @@
                                 <th >六</th>
                             </tr>
                         </thead>
-                        <tbody class="">
+                        <tbody>
                             <!-- 第一行 -->
-                            <tr height="50" class="">
+                            <tr height="50">
                                 <!-- 沒有的天數用空白取代 -->
                                 <td v-for="day in weekdayIndex" :key="day + 400" class="bg-white" style="pointer-events:none;"></td>
                                 <template v-for="(day, index) in (7 - weekdayIndex)" :key="index + 5503">
@@ -110,8 +85,8 @@
                                 </td>
                                 </template>
                             </tr>
-                             <!-- 少數一個月6列 -->
-                             <template v-if="(dayNum >= 30 && weekdayIndex === 6) || (dayNum === 31 && weekdayIndex === 5) && (new Date().getMonth() + 1) !== 2">
+                              <!-- 少數一個月6列 -->
+                              <template v-if="(dayNum >= 30 && weekdayIndex === 6) || (dayNum === 31 && weekdayIndex === 5) && (new Date().getMonth() + 1) !== 2">
                                 <tr height="50">
                                     <template  v-for="(day, index) in 7" :key="index + 5300" >
                                         <td @click="openModal(day + 21 - weekdayIndex)" :class="{'border': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-green': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'border-3': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-lightGreen': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth.split('月')[0]}-${day + 21 - weekdayIndex}`, 'bg-lightBlue': date ===  day + 21 - weekdayIndex}">{{ day + 21 - weekdayIndex }}
@@ -168,109 +143,85 @@
                     </table>
                 </div>
             </div>
-            </section>
-            <section class="col mt-lg-3">
-                <h4 class="mb-4 mt-lg-0 mt-4">開始紀錄收支吧！</h4>
-                <label for="expense" class="form-label">支出</label>
-                <div class="input-group mb-3">
-                    <select name="" id="" class="form-select" v-model="categoryE">
-                        <option value="飲食">飲食</option>
-                        <option value="日用品">日用品</option>
-                        <option value="住宿">住宿</option>
-                        <option value="交通">交通</option>
-                        <option value="娛樂">娛樂</option>
-                        <option value="衣飾">衣飾</option>
-                        <option value="其他">其他</option>
-                    </select>
-                    <input type="text" class="form-control" placeholder="支出名稱" v-model="titleE">
+          </section>
+          <section class="col mt-lg-3">
+              <h4 class="mb-4 mt-lg-0 mt-4">開始紀錄收支吧！</h4>
+              <label for="expense" class="form-label">支出</label>
+              <div class="input-group mb-3">
+                  <select name="" id="" class="form-select" v-model="categoryE">
+                      <option value="飲食">飲食</option>
+                      <option value="日用品">日用品</option>
+                      <option value="住宿">住宿</option>
+                      <option value="交通">交通</option>
+                      <option value="娛樂">娛樂</option>
+                      <option value="衣飾">衣飾</option>
+                      <option value="其他">其他</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="支出名稱" v-model="titleE">
 
-                    <input type="number" class="form-control" placeholder="金額" v-model.number="moneyE" @keydown="handleKeyDown($event)"  @keyup.enter="record('expense')">
+                  <input type="number" class="form-control" placeholder="金額" v-model.number="moneyE" @keydown="handleKeyDown($event)"  @keyup.enter="record('expense')">
 
-                    <button @click="record('expense')" type="button" class="btn btn-outline-danger  "><i class="bi bi-plus-lg"></i></button>
-                </div>
-                <label for="income" class="form-label">收入</label>
-                <div class="input-group mb-4">
-                    <select name="" id="" class="form-select" v-model="categoryR">
-                        <option value="月薪" selected>月薪</option>
-                        <option value="其他">其他</option>
-                    </select>
-                    <input type="text" class="form-control" placeholder="收入名稱" v-model="titleR">
-                    <input type="number" class="form-control" placeholder="金額" @keydown="handleKeyDown($event)" @keyup.enter="record('revenue')" v-model.number="moneyR">
-                    <button type="button" class="btn btn-outline-green" @click="record('revenue')"><i class="bi bi-plus-lg"></i></button>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4>{{ accountId }}</h4>
-                    </div>
-                    <div class="card-body">
-                        <ul v-if="accountList.length" class="list-unstyled mb-0">
-                            <li v-for="(account, index) in accountList" :key="index + 1990" class="d-flex align-items-center mb-2" :class="{'text-success': account.revenueOrExpense === 'revenue'}">
-                                <template v-if="account.revenueOrExpense === 'expense'">
-                                    <span class="me-2">-</span>
-                                    <span class="d-flex align-items-center">
-                                        <img v-if="account.categoryE === '飲食'" src="../../assets/images/hamburger.png" width="25" height="25" alt="" class="me-2">
-                                        <img v-if="account.categoryE === '日用品'" src="../../assets/images/shampoo.png" width="25" height="25" alt="" class="me-2">
-                                        <img v-if="account.categoryE === '住宿'" src="../../assets/images/house.png" width="25" height="25" alt="" class="me-2">
-                                        <img v-if="account.categoryE === '交通'" src="../../assets/images/motorcycle.png" width="25" height="25" alt="" class="me-2">
-                                        <img v-if="account.categoryE === '娛樂'" src="../../assets/images/game-controller.png" width="25" height="25" alt="" class="me-2">
-                                        <img v-if="account.categoryE === '衣飾'" src="../../assets/images/dress.png" width="25" height="25" alt="" class="me-2">
-                                        <i v-if="account.categoryE === '其他'" class="bi bi-three-dots me-2 fs-4"></i>
-                                        {{ account.categoryE }} - {{ account.titleE }}
-                                    </span> <span>NT$ {{ numberComma(account.moneyE) }}</span>
-                                </template>
-                                <template v-else-if="account.revenueOrExpense === 'revenue'">
-                                    <span class="me-2">+</span>
-                                    <span class="d-flex align-items-center">
-                                        <img v-if="account.categoryR === '月薪'" src="../../assets/images/salary.png" width="25" height="25" alt="" class="me-2">
-                                        <i v-if="account.categoryR === '其他'" class="bi bi-three-dots me-2 fs-4"></i>
+                  <button @click="record('expense')" type="button" class="btn btn-outline-danger  "><i class="bi bi-plus-lg"></i></button>
+              </div>
+              <label for="income" class="form-label">收入</label>
+              <div class="input-group mb-4">
+                  <select name="" id="" class="form-select" v-model="categoryR">
+                      <option value="月薪" selected>月薪</option>
+                      <option value="其他">其他</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="收入名稱" v-model="titleR">
+                  <input type="number" class="form-control" placeholder="金額" @keydown="handleKeyDown($event)" @keyup.enter="record('revenue')" v-model.number="moneyR">
+                  <button type="button" class="btn btn-outline-green" @click="record('revenue')"><i class="bi bi-plus-lg"></i></button>
+              </div>
+              <div class="card">
+                  <div class="card-header">
+                      <h4>{{ accountId }}</h4>
+                  </div>
+                  <div class="card-body">
+                      <ul v-if="accountList.length" class="list-unstyled mb-0">
+                          <li v-for="(account, index) in accountList" :key="index + 1990" class="d-flex align-items-center mb-2" :class="{'text-success': account.revenueOrExpense === 'revenue'}">
+                              <template v-if="account.revenueOrExpense === 'expense'">
+                                  <span class="me-2">-</span>
+                                  <span class="d-flex align-items-center">
+                                      <img v-if="account.categoryE === '飲食'" src="../../assets/images/hamburger.png" width="25" height="25" alt="" class="me-2">
+                                      <img v-if="account.categoryE === '日用品'" src="../../assets/images/shampoo.png" width="25" height="25" alt="" class="me-2">
+                                      <img v-if="account.categoryE === '住宿'" src="../../assets/images/house.png" width="25" height="25" alt="" class="me-2">
+                                      <img v-if="account.categoryE === '交通'" src="../../assets/images/motorcycle.png" width="25" height="25" alt="" class="me-2">
+                                      <img v-if="account.categoryE === '娛樂'" src="../../assets/images/game-controller.png" width="25" height="25" alt="" class="me-2">
+                                      <img v-if="account.categoryE === '衣飾'" src="../../assets/images/dress.png" width="25" height="25" alt="" class="me-2">
+                                      <i v-if="account.categoryE === '其他'" class="bi bi-three-dots me-2 fs-4"></i>
+                                      {{ account.categoryE }} - {{ account.titleE }}
+                                  </span> <span>NT$ {{ numberComma(account.moneyE) }}</span>
+                              </template>
+                              <template v-else-if="account.revenueOrExpense === 'revenue'">
+                                  <span class="me-2">+</span>
+                                  <span class="d-flex align-items-center">
+                                      <img v-if="account.categoryR === '月薪'" src="../../assets/images/salary.png" width="25" height="25" alt="" class="me-2">
+                                      <i v-if="account.categoryR === '其他'" class="bi bi-three-dots me-2 fs-4"></i>
 
-                                        {{ account.categoryR }} - {{ account.titleR }}</span>   <span>NT$ {{ numberComma(account.moneyR) }}</span>
-                                        <i v-if="account.categoryR === '其他'" class="bi bi-three-dots me-2 fs-4"></i>
-                                </template>
-                                <button type="button" @click="openDeleteModal(this.accountId, index)" class="ms-auto btn border-0"><i class="bi bi-x-lg"></i></button>
-                            </li>
-                        </ul>
-                        <p v-else-if="!accountList.length" class="mb-0">無紀錄</p>
-                    </div>
-                    <div v-if="totalRevenue || totalExpense" class="card-footer">
-                        <p v-if="totalRevenue" class="mb-0 text-end text-success fw-bold">總收入 NT${{ numberComma(totalRevenue) }}</p>
-                        <p v-if="totalExpense" class="mb-0 text-end text-danger fw-bold">總支出 - NT${{ numberComma(totalExpense) }}</p>
-                    </div>
-                </div>
-            </section>
+                                      {{ account.categoryR }} - {{ account.titleR }}</span>   <span>NT$ {{ numberComma(account.moneyR) }}</span>
+                                      <i v-if="account.categoryR === '其他'" class="bi bi-three-dots me-2 fs-4"></i>
+                              </template>
+                              <button type="button" @click="openDeleteModal(this.accountId, index)" class="ms-auto btn border-0"><i class="bi bi-x-lg"></i></button>
+                          </li>
+                      </ul>
+                      <p v-else-if="!accountList.length" class="mb-0">無紀錄</p>
+                  </div>
+                  <div v-if="totalRevenue || totalExpense" class="card-footer">
+                      <p v-if="totalRevenue" class="mb-0 text-end text-success fw-bold">總收入 NT${{ numberComma(totalRevenue) }}</p>
+                      <p v-if="totalExpense" class="mb-0 text-end text-danger fw-bold">總支出 - NT${{ numberComma(totalExpense) }}</p>
+                  </div>
+              </div>
+          </section>
         </div>
 
-        <div class="" :class="{'d-none': pageStatus === '收支紀錄' || pageStatus === '每年費用、收益總計'}">
+        <div :class="{'d-none': pageStatus === '收支紀錄' || pageStatus === '每年費用、收益總計'}">
             <div class="d-flex align-items-center justify-content-center mb-5">
                 <select name="" id="" class=" form-select fs-3 text-center border-0 me-lg-3" style="width: 150px;" v-model="monthlySelectYear">
-                    <option value="2023" selected>2023 年</option>
-                    <option value="2024">2024 年</option>
-                    <option value="2025">2025 年</option>
-                    <option value="2026">2026 年</option>
-                    <option value="2027">2027 年</option>
-                    <option value="2028">2028 年</option>
-                    <option value="2029">2029 年</option>
-                    <option value="2030">2030 年</option>
-                    <option value="2031">2031 年</option>
-                    <option value="2032">2032 年</option>
-                    <option value="2033">2033 年</option>
-                    <option value="2034">2034 年</option>
-                    <option value="2035">2035 年</option>
-                    <option value="2036">2036 年</option>
+                    <option v-for="(i, index) in 15" :key="i" :value="2023 + index">{{2023 + index}} 年</option>
                 </select>
                 <select name="" id=""  class=" form-select border-0 fs-3" style="width: 120px" v-model="monthlySelectMonth">
-                    <option value="1" selected>1 月</option>
-                    <option value="2">2 月</option>
-                    <option value="3">3 月</option>
-                    <option value="4">4 月</option>
-                    <option value="5">5 月</option>
-                    <option value="6">6 月</option>
-                    <option value="7">7 月</option>
-                    <option value="8">8 月</option>
-                    <option value="9">9 月</option>
-                    <option value="10">10 月</option>
-                    <option value="11">11 月</option>
-                    <option value="12">12 月</option>
+                    <option v-for="i in 12" :key="i + 7345" :value="i">{{i}} 月</option>
                 </select>
                 <div class="d-flex">
                   <button type="button" class="btn border" :disabled="monthlySelectMonth === 1" @click="monthlySelectMonth = monthlySelectMonth - 1"><i class="bi bi-caret-up-fill text-green"></i></button>
@@ -329,20 +280,7 @@
         <div :class="{'d-none': pageStatus === '收支紀錄' || pageStatus === '每月費用、收益總計'}">
           <div class="d-flex align-items-center justify-content-center mb-5">
             <select name="" class="form-select fs-3 text-center border-0" v-model="annualSelectYear" style="width: 150px;">
-              <option value="2023" selected>2023 年</option>
-              <option value="2024">2024 年</option>
-              <option value="2025">2025 年</option>
-              <option value="2026">2026 年</option>
-              <option value="2027">2027 年</option>
-              <option value="2028">2028 年</option>
-              <option value="2029">2029 年</option>
-              <option value="2030">2030 年</option>
-              <option value="2031">2031 年</option>
-              <option value="2032">2032 年</option>
-              <option value="2033">2033 年</option>
-              <option value="2034">2034 年</option>
-              <option value="2035">2035 年</option>
-              <option value="2036">2036 年</option>
+              <option v-for="(i, index) in 15" :key="i" :value="2023 + index">{{2023 + index}} 年</option>
             </select>
             <button type="button" class="btn border" :disabled="annualSelectYear === 2023" @click="annualSelectYear = annualSelectYear - 1"><i class="bi bi-caret-up-fill text-green"></i></button>
             <button type="button" class="btn border ms-3" :disabled="annualSelectYear === 2036" @click="annualSelectYear = annualSelectYear + 1"><i class="bi bi-caret-down-fill text-green"></i></button>
@@ -403,7 +341,7 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import { ref, onValue, set } from 'firebase/database'
 import { auth, db } from '../../firebase/db'
-import todoStore from '../../stores/todo'
+import utilityStore from '../../stores/utilities'
 import { mapActions } from 'pinia'
 import c3 from 'c3'
 import DeleteAccountModal from '../../components/DeleteAccountModal.vue'
@@ -457,7 +395,7 @@ export default {
     DeleteAccountModal
   },
   methods: {
-    ...mapActions(todoStore, ['toastMessage']),
+    ...mapActions(utilityStore, ['toastMessage']),
     numberComma (num) {
       const comma = /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g
       return num.toString().replace(comma, ',')
