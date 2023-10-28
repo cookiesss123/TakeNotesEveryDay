@@ -38,10 +38,12 @@ export default {
           const dataRef = ref(db, `todoLists/${this.uid}`)
           onValue(dataRef, snapshot => {
             const todoLists = snapshot.val()
-            this.todoLists = Object.keys(todoLists).map(key => {
-              todoLists[key].id = key
-              return todoLists[key]
-            })
+            if (todoLists) {
+              this.todoLists = Object.keys(todoLists).map(key => {
+                todoLists[key].id = key
+                return todoLists[key]
+              })
+            }
           })
         } else {
           this.$router.push('/login')
