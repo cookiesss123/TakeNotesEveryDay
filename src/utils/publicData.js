@@ -1,4 +1,25 @@
 // alt要改
+export const homeList = [
+  {
+    title: '新增清單',
+    subTitle: '簡短的清單或待辦事項',
+    img: 'https://images.unsplash.com/photo-1586282023617-b844c180eb51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    link: 'todolist'
+  },
+  {
+    title: '新增行事曆',
+    subTitle: '紀錄一天的詳細行程',
+    img: 'https://images.unsplash.com/photo-1640116565729-b5f5befc7260?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80',
+    link: 'calendar'
+  },
+  {
+    title: '新增收支紀錄',
+    subTitle: '紀錄每日收支',
+    img: 'https://images.unsplash.com/photo-1511871893393-82e9c16b81e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    link: 'accounting'
+  }
+]
+
 export const calendarBg = {
   '1月': {
     bgImg: 'https://images.unsplash.com/photo-1477511801984-4ad318ed9846?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
