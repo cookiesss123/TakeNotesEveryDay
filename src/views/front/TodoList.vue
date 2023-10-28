@@ -98,7 +98,7 @@ export default {
         </div>
       </section>
     </div>
-    <TodoModal ref="todoModal" :uid="uid" :id="todoId"  :open-modal="openModal"></TodoModal>
+    <TodoModal ref="todoModal" :uid="uid" :id="todoId" :open-modal="openModal"></TodoModal>
     <DeleteTodoModal :uid="uid" :id="todoDeleteId" :open-delete-modal="openDeleteModal"></DeleteTodoModal>
   </div>
 </template>

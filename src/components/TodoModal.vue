@@ -10,13 +10,13 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div v-if="tempTodo" class="modal-body">
-              <p>建立時間：{{ new Date(tempTodo.createdTime).toLocaleDateString() }} {{ new Date(tempTodo.createdTime).getHours() }}:{{ new Date(tempTodo.createdTime).getMinutes() }}</p>
-              <p >更新時間：{{ new Date(tempTodo.updateTime).toLocaleDateString() }} {{ new Date(tempTodo.updateTime).getHours() }}:{{ new Date(tempTodo.updateTime).getMinutes() }}</p>
+              <p>建立時間：{{ time(tempTodo.createdTime) }}</p>
+              <p >更新時間：{{ time(tempTodo.updateTime) }}</p>
 
               <div class="pb-5">
                 <section class="container">
                   <div class="mb-5">
-                    <div v-if="editTitle" class="mb-3 col-6 d-flex" style="margin: 0 auto;">
+                    <div v-if="editTitle" class="mb-3 col-6 d-flex mx-auto" >
                       <input @keyup.enter="editTitle = false" type="email" class="form-control" id="todoTitle" v-model="tempTodo.title"><button type="button" @click="editTitle = false" class="btn border-0"><i class="fs-4 bi bi-pencil-square"></i></button>
                     </div>
 
@@ -31,24 +31,24 @@
                     <div class="mt-4">
                         <div class="card">
                             <ul class="card-header d-flex list-unstyled justify-content-evenly bg-green">
-                                <li @click.prevent="page = '全部'" :class="{'border-bottom':page === '全部', 'border-3': page === '全部'}" style="transition: all .4s ease-out; border-bottom: 3px solid transparent;"><a href="#" class="btn fs-5 fw-bold text-white border-0" >全部</a></li>
-                                <li @click.prevent="page = '待完成'" :class="{'border-bottom':page === '待完成', 'border-3': page === '待完成'}" style="transition: all .4s ease-out; border-bottom: 3px solid transparent;"><a href="#" class="btn fs-5 fw-bold text-white border-0">待完成</a></li>
-                                <li @click.prevent="page = '已完成'" :class="{'border-bottom':page === '已完成', 'border-3': page === '已完成'}" style="transition: all .4s ease-out; border-bottom: 3px solid transparent;"><a href="#" class="btn fs-5 fw-bold text-white border-0">已完成</a></li>
+                                <li @click.prevent="page = '全部'" :class="{'border-bottom':page === '全部', 'border-3': page === '全部'}" ><a href="#" class="btn fs-5 fw-bold text-white border-0" >全部</a></li>
+                                <li @click.prevent="page = '待完成'" :class="{'border-bottom':page === '待完成', 'border-3': page === '待完成'}" ><a href="#" class="btn fs-5 fw-bold text-white border-0">待完成</a></li>
+                                <li @click.prevent="page = '已完成'" :class="{'border-bottom':page === '已完成', 'border-3': page === '已完成'}" ><a href="#" class="btn fs-5 fw-bold text-white border-0">已完成</a></li>
                             </ul>
                             <div class="card-body">
-                                <ul class="list-unstyled todoList">
+                                <ul class="list-unstyled">
                                   <template v-for="(todo, index) in tempTodo.list" :key="todo.id">
-                                    <li v-if="page === '全部' || (page === '待完成' && todo.checked === false) || (page === '已完成' && todo.checked === true)" class="fs-5 d-flex align-items-center" style="cursor: pointer;">
-                                      <span v-if="!todo.checked" class="checkbox "></span>
+                                    <li v-if="page === '全部' || (page === '待完成' && todo.checked === false) || (page === '已完成' && todo.checked === true)" class="fs-5 d-flex align-items-center cursor-pointer">
+                                      <span v-if="!todo.checked" class="checkbox"></span>
                                       <span v-else-if="todo.checked" class="check"></span>
-                                      <p @click="todo.checked = !todo.checked" class=" mb-0 w-100 py-3 border-bottom" :class="{'text-decoration-line-through': todo.checked}" style="word-break: break-all;">{{todo.message}}</p>
+                                      <p @click="todo.checked = !todo.checked" class="ms-20 mb-0 w-100 py-3 border-bottom word-break-all" :class="{'text-decoration-line-through': todo.checked}">{{todo.message}}</p>
                                       <a href="#" class="btn ms-auto" @click.prevent="tempTodo.list.splice(index, 1)"><i class="bi bi-x-lg"></i></a>
                                     </li>
                                   </template>
                                 </ul>
                             </div>
                             <div class="card-footer d-flex justify-content-between align-items-center">
-                              <p class="mb-0">{{ tempTodo.list.filter(item => item.checked === false).length }} 個待完成項目</p>
+                              <p class="mb-0">{{ undoneNum(tempTodo.list) }} 個待完成項目</p>
                               <button type="button" class="btn border-0" @click="clearAll">清除已完成項目</button>
                             </div>
                         </div>
@@ -84,9 +84,9 @@ export default {
       editTitle: false,
       message: '',
       todoId: '',
-      todoNum: 0,
       status: 'new',
-      page: '全部'
+      page: '全部',
+      renderTodo: []
     }
   },
   mixins: [modalMixin],
@@ -105,7 +105,7 @@ export default {
       this.message = ''
     },
     clearAll () {
-      this.tempTodo.list = this.tempTodo.list.filter(item => item.checked === false)
+      this.tempTodo.list = this.tempTodo.list.filter(item => !item.checked)
     },
     updateTodo () {
       if (this.status === 'new') {
@@ -127,8 +127,6 @@ export default {
         this.hide()
       }
     }
-  },
-  mounted () {
   },
   watch: {
     id () {
@@ -155,10 +153,7 @@ export default {
           }
           this.show()
           this.todoId = this.id
-          this.openModal('')
-
-          const unfinished = this.tempTodo.list.filter(item => item.checked === false)
-          this.todoNum = unfinished.length
+          this.openModal('') // 使用父元件方法會清除 父元件id 為何這裡要清除? => 確保關閉後如果點同一個id一樣會開啟
         })
       }
     },
@@ -166,38 +161,19 @@ export default {
       if (this.page === '全部') {
         this.renderTodo = this.tempTodo.list
       } else if (this.page === '待完成') {
-        this.renderTodo = this.tempTodo.list.filter(item => item.checked === false)
+        this.renderTodo = this.tempTodo.list.filter(item => !item.checked)
       } else if (this.page === '已完成') {
-        this.renderTodo = this.tempTodo.list.filter(item => item.checked === true)
+        this.renderTodo = this.tempTodo.list.filter(item => item.checked)
       }
+    }
+  },
+  computed: {
+    time () {
+      return timeNum => new Date(timeNum).toLocaleDateString() + new Date(timeNum).toLocaleString().split(' ')[1]
+    },
+    undoneNum () {
+      return list => list.filter(item => item.checked === false).length
     }
   }
 }
 </script>
-<style>
-.todoList li p {
-  margin-left: 20px;
-}
-.todoList li .checkbox{
-  width: 32px;
-  height: 30px;
-  border-radius: 4px;
-  border: 1px solid black;
-  background-color: white;
-  display: inline-block;
-  margin-left: 10px;
-}
-.todoList li .check{
-  width: 15px;
-  height: 30px;
-  transform: rotate(45deg);
-  border-bottom: 3px solid #62776f;
-  border-right: 3px solid #62776f;
-  background-color: white;
-  display: inline-block;
-  margin-right: 5px;
-  margin-left: 20px;
-  margin-bottom: 10px;
-}
-
-</style>
