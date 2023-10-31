@@ -10,6 +10,15 @@
 .object-fit-cover{
     object-fit: cover;
 }
+.bg-cover{
+    background-size: cover;
+}
+.bg-center{
+    background-position: center;
+}
+.bg-no-repeat{
+    background-repeat: no-repeat;
+}
 .word-break-all{ // 強制文字在框框內
     word-break: break-all;
 }
@@ -29,4 +38,8 @@
 }
 .rounded-right-20{
     border-radius: 0 20px 0 0;
+}
+.select-arrow-none{
+    appearance: none; 
+    background: url('') no-repeat right center;
 }

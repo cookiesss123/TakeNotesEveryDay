@@ -66,7 +66,7 @@ export default {
 </script>
 <template>
   <div data-aos="fade-up" data-aos-duration="1000">
-    <div class="my-7">
+    <div class="py-lg-160 py-100">
       <section class="container mb-5">
         <h2 class="mb-5 d-flex align-items-center justify-content-center">
           清單

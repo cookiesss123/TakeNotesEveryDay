@@ -1,0 +1,30 @@
+.calendar{
+    td{
+        &:hover{
+            background-color: $secondary;
+            cursor: pointer;
+        }
+    }
+}
+.today{
+    background: $darkBlue !important;
+    h5{
+        color: white;
+    }
+    span{
+        color: $darkBlue !important;
+        background: white !important;
+
+    }
+}
+.active-date{
+    background: $primary !important;
+    h5{
+        color: white;
+    }
+    span{
+        color: $primary !important;
+        background: white !important;
+
+    }
+}

@@ -39,8 +39,8 @@
                                 <ul class="list-unstyled">
                                   <template v-for="(todo, index) in tempTodo.list" :key="todo.id">
                                     <li v-if="page === '全部' || (page === '待完成' && todo.checked === false) || (page === '已完成' && todo.checked === true)" class="fs-5 d-flex align-items-center cursor-pointer">
-                                      <span v-if="!todo.checked" class="checkbox"></span>
-                                      <span v-else-if="todo.checked" class="check"></span>
+                                      <span v-if="!todo.checked" class="checkbox" style="width: 30px; height: 30px;"></span>
+                                      <span v-else-if="todo.checked" class="check" style="width: 15px; height: 30px;"></span>
                                       <p @click="todo.checked = !todo.checked" class="ms-20 mb-0 w-100 py-3 border-bottom word-break-all" :class="{'text-decoration-line-through': todo.checked}">{{todo.message}}</p>
                                       <a href="#" class="btn ms-auto" @click.prevent="tempTodo.list.splice(index, 1)"><i class="bi bi-x-lg"></i></a>
                                     </li>
