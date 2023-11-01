@@ -1,7 +1,7 @@
 <template>
     <div data-aos="fade-up" data-aos-duration="1000" class="py-lg-160 py-100 container">
       <h2 class="text-center">行事曆</h2>
-      <div class="row g-4 ">
+      <div class="row g-4">
         <div class="col-lg-6">
           <select name="" id="" class="mx-auto form-select text-center border-0 fs-lg-3 fs-4" v-model="selectYear" style="width: 150px;">
             <option v-for="(i, index) in 15" :key="i + 68" :value="2023 + index">{{2023 + index}}</option>

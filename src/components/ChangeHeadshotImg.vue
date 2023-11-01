@@ -18,9 +18,6 @@
 import modalMixin from '../mixins/modalMixin'
 import { mapActions } from 'pinia'
 import utilityStore from '../stores/utilities'
-// import { db, auth } from '../firebase/db'
-// import { onAuthStateChanged } from 'firebase/auth'
-// import { ref, onValue } from 'firebase/database'
 export default {
   data () {
     return {

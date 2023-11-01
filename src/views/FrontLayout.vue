@@ -22,7 +22,7 @@
                             <RouterLink to="/todolist" active-class="active-link" class="nav-link fw-bold me-lg-3">清單</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/calendar" active-class="active-link" class="nav-link fw-bold me-lg-3">行事曆</RouterLink>
+                            <RouterLink to="/schedule" active-class="active-link" class="nav-link fw-bold me-lg-3">行事曆</RouterLink>
                         </li>
                         <li class="nav-item">
                             <RouterLink to="/accounting" active-class="active-link" class="nav-link fw-bold">記帳</RouterLink>

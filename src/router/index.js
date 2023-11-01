@@ -18,17 +18,13 @@ const router = createRouter({
           component: () => import('../views/front/TodoList.vue')
         },
         {
-          path: 'calendar',
-          component: () => import('../views/front/CalendarView.vue')
+          path: 'schedule',
+          component: () => import('../views/front/ScheduleView.vue')
         },
         {
           path: 'accounting',
           component: () => import('../views/front/AccountingView.vue')
         },
-        // {
-        //   path: 'signup',
-        //   component: () => import('../views/front/SignUp.vue')
-        // },
         {
           path: 'loginSignup',
           component: () => import('../views/front/LoginSignup.vue')

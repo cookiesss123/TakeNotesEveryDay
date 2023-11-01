@@ -723,14 +723,14 @@ export default {
 }
 </script>
 <style>
-    .calendar tbody tr td:hover{
+    /* .calendar tbody tr td:hover{
         background-color: #deebf6;
         cursor: pointer;
     }
 
     .calendar tbody tr td{
         color: #79827f;
-    }
+    } */
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
