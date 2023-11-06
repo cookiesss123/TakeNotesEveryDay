@@ -110,7 +110,7 @@ export default {
     updateTodo () {
       if (this.status === 'new') {
         if (!this.tempTodo.title) {
-          this.tempTodo.title = `清單${new Date().getTime()}`
+          this.tempTodo.title = new Date().toLocaleDateString()
         }
         const reference = ref(db, `todoLists/${this.uid}/`)
         const newUserRef = push(reference)

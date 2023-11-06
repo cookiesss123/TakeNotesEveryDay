@@ -21,6 +21,19 @@
             }
         }
     }
-    
-    
+    // 首頁 hover
+    .card-hover{
+        .card{
+          overflow: hidden;
+          img{
+            transform: scale(1);
+            transition: all .4s ease-out;
+          }
+          &:hover{
+            img{
+              transform: scale(1.2);
+            }
+          }
+        }
+      }
 }

@@ -15,7 +15,7 @@ export default {
 <template>
   <section class="container mb-5 py-lg-160 py-100" data-aos="fade-up"  data-aos-duration="1000">
     <h2 class="mb-5 text-center">選單</h2>
-    <div class="menu row row-cols-lg-3 row-cols-1 gy-4">
+    <div class="card-hover row row-cols-lg-3 row-cols-1 gy-4">
       <div class="col" v-for="item in homeList" :key="item.img">
         <div class="card bg-dark text-white border-0 h-100 bg-white">
           <img :src="item.img" class="h-100 card-img object-fit-cover" :alt="item.title">

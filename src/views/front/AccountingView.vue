@@ -265,34 +265,8 @@ export default {
       <div v-if="pageStatus === '收支紀錄'" class="row g-4">
         <CalendarComponent @data-id="getDateId" @color="getColor" :data="allAccounts" :get-data="getRecord"></CalendarComponent>
         <div class="col">
-            <!-- <div class="row g-3">
-              <div class="col-lg-2">
-                <label for="transactionType" class="form-label">交易種類</label>
-                <select name="" id="transactionType" class="form-select" v-model="transactionType">
-                  <option value="支出">支出</option>
-                  <option value="收入">收入</option>
-                </select>
-              </div>
-              <div class="col-lg-2">
-                <label for="category" class="form-label">種類</label>
-                <select name="" id="category" class="form-select" v-model="category">
-                  <option v-for="(item, key) in accountingCategory[transactionType]" :key="key" :value="key">{{ key }}</option>
-                </select>
-              </div>
-              <div class="col-lg-4">
-                <label for="title" class="form-label">款項名稱</label>
-                <input type="text" id="title" class="form-control" placeholder="款項名稱" v-model="title">
-              </div>
-              <div class="col-lg-3 col-10">
-                <label for="money" class="form-label">金額</label>
-                <input type="number" id="money" class="form-control" placeholder="金額" v-model.number="money" @keydown="handleKeyDown($event)" @keyup.enter="addRecord">
-              </div>
-              <div class="col-lg-1 col-2 d-flex mt-auto">
-                <button @click="addRecord" type="button" class="btn" :class="{'btn-outline-success': transactionType === '收入', 'btn-outline-danger': transactionType === '支出'}"><i class="bi bi-plus-lg"></i></button>
-              </div>
-            </div> -->
             <div class="card">
-                <div class="card-header fs-4 text-center text-white" :class="[`bg-${color}`]">{{ accountId }}</div>
+                <div class="card-header fs-lg-4 fs-5 text-center text-white" :class="[`bg-${color}`]">{{ accountId }}</div>
                 <div class="card-body pb-0">
                   <table class="table table-hover align-middle fs-14 fs-lg-6">
                     <tbody class="list-unstyled mb-0">
@@ -307,7 +281,10 @@ export default {
                           <button type="button" @click="openDeleteModal(this.accountId, index)" class="btn border-0"><i class="bi bi-x-lg"></i></button>
                         </td>
                       </tr>
-                      <tr v-if="!oneDayAccountList.length" class="text-center">無紀錄</tr>
+                      <tr v-if="!oneDayAccountList.length" class="text-center pointer-events-none">
+                        <img src="../../assets/images/undraw_Notebook_re_id0r.png" alt="尚無紀錄">
+                        <p class="fs-6 fs-lg-4">尚無紀錄</p>
+                      </tr>
                     </tbody>
                     <tfoot class="border-0 border-3 border-top" :class="`border-${color}`">
                       <tr v-if="sum(oneDayAccountList, '支出')">
@@ -374,13 +351,13 @@ export default {
               </div>
           </div>
 
-          <h5 class="text-center fw-bold mt-3 " :class="{'text-danger':  (sum(monthlyStatement, '收入') - sum(monthlyStatement, '支出')) < 0, 'text-success': (sum(monthlyStatement, '收入') - sum(monthlyStatement, '支出')) > 0}">結餘 {{ numberComma(sum(monthlyStatement, '收入') - sum(monthlyStatement, '支出')) }}
+          <h5 class="text-center fw-bold mt-4 fs-lg-5 fs-6" :class="{'text-danger':  (sum(monthlyStatement, '收入') - sum(monthlyStatement, '支出')) < 0, 'text-success': (sum(monthlyStatement, '收入') - sum(monthlyStatement, '支出')) > 0}">結餘 {{ numberComma(sum(monthlyStatement, '收入') - sum(monthlyStatement, '支出')) }}
           </h5>
       </div>
 
       <div :class="{'d-none': pageStatus === '收支紀錄' || pageStatus === '每月損益分析'}">
         <div class="d-flex align-items-center justify-content-center mb-5">
-          <select name="" class="form-select fs-3 text-center border-0 select-arrow-none" v-model="annualSelectYear" style="width: 150px;">
+          <select name="" class="form-select fs-lg-3 fs-4 text-center border-0 select-arrow-none" v-model="annualSelectYear" style="width: 150px;">
             <option v-for="(i, index) in 15" :key="i" :value="2023 + index">{{2023 + index}} 年</option>
           </select>
           <button type="button" class="btn border" :disabled="annualSelectYear === 2023" @click="annualSelectYear = annualSelectYear - 1"><i class="bi bi-caret-up-fill text-primary"></i></button>
@@ -420,7 +397,7 @@ export default {
                   </ul>
               </div>
           </div>
-          <h5 class="text-center fw-bold mt-3" :class="{'text-danger':  (sum(annualStatement, '收入') - sum(annualStatement, '支出')) < 0, 'text-success': (sum(annualStatement, '收入') - sum(annualStatement, '支出')) > 0}">結餘
+          <h5 class="text-center fw-bold mt-4 fs-lg-5 fs-6" :class="{'text-danger':  (sum(annualStatement, '收入') - sum(annualStatement, '支出')) < 0, 'text-success': (sum(annualStatement, '收入') - sum(annualStatement, '支出')) > 0}">結餘
             <span v-if="sum(annualStatement, '收入') - sum(annualStatement, '支出') > 0">NT$ {{ numberComma(sum(annualStatement, '收入') - sum(annualStatement, '支出')) }}</span>
             <span v-else-if="sum(annualStatement, '收入') - sum(annualStatement, '支出') < 0"> - NT$ {{ Math.abs(sum(annualStatement, '收入') - sum(annualStatement, '支出')) }}</span>
           </h5>

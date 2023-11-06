@@ -65,7 +65,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="text-decoration-none text-white">
+                  <a href="mailto:@TakeNotesEveryDay.gmail.com" class="text-decoration-none text-white">
                     <i class="bi bi-envelope me-2 fs-34"></i>
                   </a>
                 </li>

@@ -72,7 +72,7 @@ export default {
           清單
         </h2>
         <div class="row row-cols-lg-2 row-cols-1 gy-4">
-          <div class="col menu">
+          <div class="col card-hover">
             <div class="card bg-white text-white border-0 h-100">
               <img src="https://images.unsplash.com/photo-1586282023617-b844c180eb51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="h-100 card-img object-fit-cover" alt="清單示意圖">
               <div class="card-img-overlay d-flex">
