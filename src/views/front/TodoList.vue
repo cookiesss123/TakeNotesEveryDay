@@ -3,6 +3,7 @@ import { db, auth } from '../../firebase/db'
 import { ref, onValue } from 'firebase/database'
 import { onAuthStateChanged } from 'firebase/auth'
 import utilityStore from '../../stores/utilities'
+import loadingStore from '../../stores/loadingStore'
 import { mapActions } from 'pinia'
 import TodoModal from '../../components/TodoModal.vue'
 import DeleteTodoModal from '../../components/DeleteTodoModal.vue'
@@ -23,6 +24,7 @@ export default {
   },
   methods: {
     ...mapActions(utilityStore, ['toastMessage']),
+    ...mapActions(loadingStore, ['startLoading', 'endLoading']),
     openModal (id) {
       this.todoId = id
     },
@@ -32,6 +34,7 @@ export default {
     },
 
     getTodoLists () {
+      this.startLoading()
       onAuthStateChanged(auth, (user) => {
         if (user) {
           this.uid = user.uid
@@ -44,10 +47,12 @@ export default {
                 return todoLists[key]
               })
             }
+            this.endLoading()
           })
         } else {
           this.$router.push('/loginSignup')
           this.toastMessage('請登入', 'error')
+          this.endLoading()
         }
       })
     }

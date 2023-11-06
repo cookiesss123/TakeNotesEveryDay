@@ -1,6 +1,7 @@
 <script>
 import { onAuthStateChanged } from 'firebase/auth'
 import utilityStore from '../../stores/utilities'
+import loadingStore from '../../stores/loadingStore'
 import { mapActions } from 'pinia'
 import { ref, onValue, set, push } from 'firebase/database'
 import { auth, db } from '../../firebase/db'
@@ -29,6 +30,7 @@ export default {
   },
   methods: {
     ...mapActions(utilityStore, ['toastMessage', 'goToTop']),
+    ...mapActions(loadingStore, ['startLoading', 'endLoading']),
     getDateId (dataId) { // 用於emit 子傳父
       this.scheduleId = dataId
     },
@@ -36,6 +38,7 @@ export default {
       this.color = color
     },
     getSchedules () { // 取得此人所有行程
+      this.startLoading()
       onAuthStateChanged(auth, (user) => {
         if (user) {
           this.uid = user.uid
@@ -55,11 +58,13 @@ export default {
               this.schedules = {}
               this.oneDaySchedule = {}
             }
+            this.endLoading()
           })
         } else {
           this.uid = null
           this.$router.push('/loginSignup')
           this.toastMessage('請登入', 'error')
+          this.endLoading()
         }
       })
     },

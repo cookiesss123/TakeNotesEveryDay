@@ -60,7 +60,6 @@ export default {
           this.tempAccountList = snapshot.val()
           if (this.tempAccountList) {
             this.tempAccount = this.tempAccountList[this.index]
-            console.log(this.tempAccount, '這個')
           }
           this.show()
           this.deleteId = this.id

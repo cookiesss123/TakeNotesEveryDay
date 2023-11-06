@@ -3,6 +3,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { ref, onValue, set } from 'firebase/database'
 import { auth, db } from '../../firebase/db'
 import utilityStore from '../../stores/utilities'
+import loadingStore from '../../stores/loadingStore'
 import { mapActions } from 'pinia'
 import c3 from 'c3'
 import DeleteAccountModal from '../../components/DeleteAccountModal.vue'
@@ -46,6 +47,7 @@ export default {
   },
   methods: {
     ...mapActions(utilityStore, ['toastMessage', 'goToTop']),
+    ...mapActions(loadingStore, ['startLoading', 'endLoading']),
     getDateId (dataId) {
       this.accountId = dataId
     },
@@ -53,6 +55,7 @@ export default {
       this.color = color
     },
     getAllRecord () {
+      this.startLoading()
       onAuthStateChanged(auth, (user) => {
         if (user) {
           this.uid = user.uid
@@ -67,11 +70,13 @@ export default {
               this.oneDayAccountList = []
             }
             this.dateArr = Object.keys(this.allAccounts) // 計算有帳款的日期
+            this.endLoading()
           })
         } else {
           this.uid = null
           this.$router.push('/loginSignup')
           this.toastMessage('請登入', 'error')
+          this.endLoading()
         }
       })
     },
@@ -88,7 +93,6 @@ export default {
               return
             }
             this.oneDayAccountList = account
-            console.log(this.oneDayAccountList, '一天收支情形')
           })
         } else {
           this.uid = null

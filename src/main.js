@@ -16,6 +16,8 @@ import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 
 import App from './App.vue'
 import router from './router'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/css/index.css'
 
 const app = createApp(App)
 Object.keys(AllRules).forEach(rule => {
@@ -29,6 +31,7 @@ configure({
 setLocale('zh_TW')
 
 app.use(createPinia())
+app.component('VLoading', Loading)
 app.use(router)
 app.use(VueSweetalert2)
 app.component('VForm', Form)
