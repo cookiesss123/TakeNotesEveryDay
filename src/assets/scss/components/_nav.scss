@@ -1,0 +1,30 @@
+.nav-link{
+    border-bottom: 2px solid transparent;
+    transition: all .4s ease-out;
+}
+// front
+.active-link{
+    color: white;
+    border-bottom: 2px solid white !important;
+}
+// accout
+.active-link-sm{
+    font-weight: bold;
+    color: $primary;
+    border-bottom: 2px solid $primary !important;
+}
+
+@include media-breakpoint-up(lg) {
+    // front
+    .nav-link-lg{
+        &:hover{
+            border-bottom: 2px solid white;
+        }
+    }
+    // accout
+    .nav-link-sm{
+        &:hover{
+            border-bottom: 2px solid $primary;
+        }
+    }
+}

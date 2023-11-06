@@ -1,3 +1,6 @@
-.list-group li:hover{
-    background-color: $secondary;
+
+@include media-breakpoint-up(lg) {
+    .list-group li:hover{
+        background-color: $secondary;
+    }
 }

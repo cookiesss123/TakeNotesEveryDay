@@ -28,17 +28,18 @@ export default {
   },
   methods: {
     ...mapActions(utilityStore, ['toastMessage', 'goToTop']),
-    getSchedules (dataId) { // 取得此人所有行程
+    getDateId (dataId) { // 用於emit 子傳父
+      this.scheduleId = dataId
+    },
+    getSchedules () { // 取得此人所有行程
       onAuthStateChanged(auth, (user) => {
         if (user) {
           this.uid = user.uid
           const dataRef = ref(db, 'schedules/' + user.uid)
           onValue(dataRef, snapshot => {
             this.schedules = snapshot.val()
-            this.scheduleId = dataId
             if (this.schedules) {
-              this.oneDaySchedule = this.schedules[dataId]
-              console.log(dataId, this.scheduleId, this.oneDaySchedule, '傳入的id')
+              this.oneDaySchedule = this.schedules[this.scheduleId]
 
               if (this.oneDaySchedule) {
                 for (const id in this.oneDaySchedule) {
@@ -58,7 +59,8 @@ export default {
         }
       })
     },
-    getSchedule () { // 取得一天行程
+    getSchedule (dataId) { // 取得一天行程
+      this.scheduleId = dataId
       const dataRef = ref(db, `schedules/${this.uid}/${this.scheduleId}`)
       onValue(dataRef, snapshot => {
         this.oneDaySchedule = snapshot.val()
@@ -96,16 +98,17 @@ export default {
   },
   mounted () {
     this.goToTop()
+    this.getSchedules()
   }
 }
 </script>
 <template>
     <div data-aos="fade-up" data-aos-duration="1000" class="py-lg-160 py-100 container">
-      <h2 class="text-center">行事曆</h2>
+      <h2 class="text-center mb-4 mb-lg-5">行事曆</h2>
       <div class="row g-4">
-        <CalendarComponent ref="calendar" @data-id="getSchedules" :data="schedules" :get-data="getSchedule" :get-all-data="getSchedules"></CalendarComponent>
-        <div class="col-lg-6">
-          <h3 class="text-center mb-lg-4 mb-3" v-if="this.$refs.calendar">{{ this.$refs.calendar.selectYear }}-{{ this.$refs.calendar.selectMonth }}-{{ this.$refs.calendar.date }}</h3>
+        <CalendarComponent @data-id="getDateId" :data="schedules" :get-data="getSchedule"></CalendarComponent>
+        <div class="col">
+          <h3 class="text-center mb-lg-4 mb-3">{{ scheduleId }}</h3>
           <ul class="list-unstyled d-flex justify-content-end fs-14 fs-lg-6">
             <li class="d-flex me-3">
                 <div class="bg-danger" style="width: 20px; height: 20px;"></div>
@@ -153,7 +156,7 @@ export default {
               <button @click="addTempSchedule" type="button" class="btn btn-outline-primary ms-auto">+</button>
             </div>
           </div>
-          <table class="table table-borderless CalendarModal fs-14 fs-lg-5 text-center">
+          <table class="table table-borderless fs-14 fs-lg-5 text-center">
               <thead class="border-bottom">
                 <tr>
                   <th class="white-space-nowrap">註記</th>

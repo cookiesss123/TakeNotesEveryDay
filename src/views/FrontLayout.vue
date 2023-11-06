@@ -3,6 +3,7 @@
         <header class="fixed-top">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
+              <h1 class="mb-0">
                 <RouterLink to="/home" class="navbar-brand d-flex align-items-center">
                   <img src="../assets/images/icon.png" class="me-2" alt="logo" style="width: 40px; height: 40px;">
                   <div class="text-white">
@@ -10,27 +11,28 @@
                     <p class="fs-6 fw-bold mb-0 text-start">Take Notes Every Day</p>
                   </div>
                 </RouterLink>
+              </h1>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto  d-flex align-items-center fs-5">
                         <li class="nav-item">
-                            <RouterLink to="/home" active-class="active-link" class="nav-link fw-bold me-lg-3">首頁</RouterLink>
+                            <RouterLink to="/home" active-class="active-link" class="nav-link nav-link-lg fw-bold me-lg-3">首頁</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/todolist" active-class="active-link" class="nav-link fw-bold me-lg-3">清單</RouterLink>
+                            <RouterLink to="/todolist" active-class="active-link" class="nav-link nav-link-lg fw-bold me-lg-3">清單</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/schedule" active-class="active-link" class="nav-link fw-bold me-lg-3">行事曆</RouterLink>
+                            <RouterLink to="/schedule" active-class="active-link" class="nav-link nav-link-lg fw-bold me-lg-3">行事曆</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <RouterLink to="/accounting" active-class="active-link" class="nav-link fw-bold">記帳</RouterLink>
+                            <RouterLink to="/accounting" active-class="active-link" class="nav-link nav-link-lg fw-bold">記帳</RouterLink>
                         </li>
                     </ul>
                     <ul v-if="!uid" class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center fs-5">
                       <li class="nav-item">
-                          <RouterLink to="/loginSignup" active-class="active-link" class="nav-link fw-bold me-lg-3">登入 / 註冊</RouterLink>
+                          <RouterLink to="/loginSignup" active-class="active-link" class="nav-link nav-link-lg fw-bold me-lg-3">登入 / 註冊</RouterLink>
                       </li>
                     </ul>
                     <ul v-else-if="uid" class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center fs-5">
@@ -40,7 +42,7 @@
                             <span class="ms-2 text-white">{{ user.nickName }}</span>
                         </li>
                         <li class="nav-item ms-lg-2">
-                            <a href="#" @click.prevent="logout" class="nav-link fw-bold">登出</a>
+                            <a href="#" @click.prevent="logout" class="nav-link nav-link-lg fw-bold">登出</a>
                         </li>
                     </ul>
                 </div>

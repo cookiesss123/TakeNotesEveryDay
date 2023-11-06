@@ -9,9 +9,12 @@
 @import "./base/base";
 @import "./utilities/helpers.scss";
 
-@import "./layout/header";
 @import "./components/list-group";
 @import "./components/check-box";
 @import "./components/card";
 @import "./components/table";
 @import "./components//imgHover";
+@import "./components//nav";
+// Flaticon
+@import "@flaticon/flaticon-uicons/css/all/all";
+@import 'hover.css/css/hover-min.css';

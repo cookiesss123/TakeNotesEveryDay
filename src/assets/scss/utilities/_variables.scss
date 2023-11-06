@@ -301,10 +301,17 @@ $cyans: (
 $primary:       #62776f; // $blue !default;
 $secondary:     #def6ed; // $gray-600 !default;
 $blueGreen:     #73a079;
-$darkBlue:     #4476a9;
 $gray:          $gray-600; 
-$lightGray:     $gray-200; 
-$lightBlue:     #deebf6; 
+
+$food:          #fe9738; 
+$necessities:   #64a5f8;
+$hotel:         #a501e1;
+$transportation:#f94730;
+$entertainment: #1d8d6a;
+$clothing:      #fe66a0;
+$salary:        #5aa622;
+$others:        #212529;
+
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
@@ -318,30 +325,51 @@ $theme-colors: (
   "primary":    $primary,
   "secondary":  $secondary,
   "blueGreen":  $blueGreen,
-  "darkBlue":  $darkBlue,
   "gray":       $gray,
-  "lightGray":  $lightGray,
-  "lightBlue":  $lightBlue,
+  "lightRed":   $red-100,
+
+
   "success":    $success,
   "info":       $info,
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
   "dark":       $dark,
-  // "green": #62776f,  // bg custom
-  // "blueGreen": #73a079, // 暫時不刪 因為這是 登入註冊的顏色
-  // "lightGreen": #def6ed,
-  "green-4": #73a079,
-  "green-5": #56a377,
-  "purple": #8b8dae,
-  "blue": #6391a1,
-  "pink": #fe5471,
-  "yellow": #f2a71c,
-  "orange": #ff642c,
-  "red": #ff6149,
-  "darkRed": #c9561d,
-  "darkOrange": #ba6525,
-  "brown": #f07e04,
+
+  "today1": $blue-600,
+  "today2": $cyan-600,
+  "today3": $pink-600,
+  "today4": $red-600,
+  "today5": $yellow-600,
+  "today6": $teal-600,
+  "today7": $green-600,
+  "today8": $yellow-600,
+  "today9": $orange-600,
+  "today10": $red-700,
+  "today11": #ba6525,
+  "today12": $purple-600,
+
+  "active1": $blue-200,
+  "active2": $cyan-200,
+  "active3": $pink-200,
+  "active4": $red-200,
+  "active5": $yellow-200,
+  "active6": $teal-200,
+  "active7": $green-200,
+  "active8": $yellow-300,
+  "active9": $orange-200,
+  "active10": $red-300,
+  "active11": #ec9653,
+  "active12": $purple-200,
+
+  "food":    $food,
+  "necessities":  $necessities,
+  "hotel":  $hotel,
+  "transportation":  $transportation,
+  "entertainment":       $entertainment,
+  "clothing":  $clothing,
+  "salary":  $salary,
+  "others":    $others,
 ) !default;
 // scss-docs-end theme-colors-map
 

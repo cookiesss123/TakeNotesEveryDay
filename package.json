@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@flaticon/flaticon-uicons": "^3.0.0",
     "@vee-validate/i18n": "^4.9.6",
     "@vee-validate/rules": "^4.9.6",
     "aos": "^3.0.0-beta.6",

@@ -7,16 +7,20 @@
     }
 }
 
-.card-login-signup{
-    .card-header{
-        h2{
-            &:hover{
-                background-color: $blueGreen;
-                color: white;
-                a {
-                    color: white !important;
+@include media-breakpoint-up(lg) {
+    .card-login-signup{
+        .card-header{
+            h2{
+                &:hover{
+                    background-color: $blueGreen;
+                    color: white;
+                    a {
+                        color: white !important;
+                    }
                 }
             }
         }
     }
+    
+    
 }

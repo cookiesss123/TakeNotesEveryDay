@@ -9,12 +9,9 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" v-if="tempAccount">
-                <p>確定要刪除這一筆帳款嗎
-                    <span v-if="tempAccount.revenueOrExpense === 'expense'" class="text-danger fw-bold">
-                      【{{tempAccount.categoryE}} - {{ tempAccount.titleE }} NT$ {{ numberComma(tempAccount.moneyE) }} 】
-                    </span>
-                    <span v-else-if="tempAccount.revenueOrExpense === 'revenue'" class="text-danger fw-bold">
-                      【{{tempAccount.categoryR}} - {{ tempAccount.titleR }} NT$ {{ numberComma(tempAccount.moneyR) }} 】
+                <p>確定要刪除這一筆帳款
+                    <span class="fw-bold" :class="{'text-danger': tempAccount.transactionType === '支出', 'text-success': tempAccount.transactionType === '收入'}">
+                      【{{tempAccount.category}} - {{ tempAccount.title }} NT$ <span v-if="tempAccount.money">{{ numberComma(tempAccount.money) }}</span> 】
                     </span>
                     嗎?
                 </p>
@@ -63,6 +60,7 @@ export default {
           this.tempAccountList = snapshot.val()
           if (this.tempAccountList) {
             this.tempAccount = this.tempAccountList[this.index]
+            console.log(this.tempAccount, '這個')
           }
           this.show()
           this.deleteId = this.id

@@ -32,7 +32,7 @@
                                         </h2>
                                     </div>
                                 </div>
-                                <h1 class="text-primary text-center h3 mt-4">
+                                <h2 class="text-primary text-center h3 mt-4">
                                   歡迎來到
                                   <div class="d-flex align-items-center mt-2 justify-content-center">
                                       <img src="../../assets/images/icon.png" class="me-2" alt="logo" style="width: 40px; height: 40px;">
@@ -41,7 +41,7 @@
                                         <p class="fs-6 fw-bold mb-0 text-start">Take Notes Every Day</p>
                                       </div>
                                   </div>
-                                </h1>
+                                </h2>
                                 <VForm v-if="page === '登入'" class="mx-5 card-body my-3" v-slot="{ errors }"  @submit="login">
                                 <div class="row gy-5 d-flex text-gray">
                                     <div class="col-12 fs-5">

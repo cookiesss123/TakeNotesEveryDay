@@ -15,7 +15,7 @@ export default {
       weekNum: 0 // 星期數
     }
   },
-  props: ['data', 'getData', 'getAllData'],
+  props: ['data', 'getData'],
   methods: {
     countFebruaryDay (year) { // 計算2月天數
       // 閏年 平年
@@ -27,30 +27,32 @@ export default {
       this.weekNum = Math.ceil((this.dayNum + this.startOfWeek) / 7)
       this.endDay = (this.dayNum + this.startOfWeek) % 7
     },
-    watchSchedule (day, week) { // 1~7天  第幾個星期
+    getOneDayInfo (day, week) { // 1~7天  第幾個星期
       if (week === 1 && day > this.startOfWeek) { // 第一個星期
         this.date = day - this.startOfWeek
         // 1. 扣除第一和最後一個星期 || 2. 最後一個星期
       } else if ((week !== 1 && week !== this.weekNum) || (week === this.weekNum && (day <= this.endDay || this.endDay === 0))) {
         this.date = day - this.startOfWeek + 7 * (week - 1)
       }
-      this.$emit('data-id', this.dataId)
-      this.getData()
+      this.getData(this.dataId)
     }
   },
   mounted () {
     this.countFebruaryDay(this.selectYear)
     this.getWeeks()
     this.$emit('data-id', this.dataId)
-    this.getAllData(this.dataId)
+    this.$emit('color', this.color)
   },
   watch: {
     selectYear () {
       this.countFebruaryDay(this.selectYear)
       this.getWeeks()
+      this.getData(this.dataId)
     },
     selectMonth () {
       this.getWeeks()
+      this.getData(this.dataId)
+      this.$emit('color', this.color)
     }
   },
   computed: {
@@ -68,29 +70,36 @@ export default {
       }
     },
     dataId () {
+      console.log(`${this.selectYear}-${this.selectMonth}-${this.date}`, '目前id')
       return `${this.selectYear}-${this.selectMonth}-${this.date}`
+    },
+    color () { // 深色
+      return [`today${this.selectMonth}`]
+    },
+    activeColor () { // 淺色
+      return [`bg-active${this.selectMonth}`]
     }
   }
 }
 </script>
 <template>
-    <div class="col-lg-6">
-        <select name="" id="" class="mx-auto form-select text-center border-0 fs-lg-3 fs-4" v-model="selectYear" style="width: 150px;">
-        <option v-for="(i, index) in 15" :key="i + 68" :value="2023 + index">{{2023 + index}}</option>
-        </select>
-        <div class="card">
-            <div class="card-header bg-primary bg-no-repeat bg-cover" :style="`background-image: url('${bgImg}')`">
-                <div class="col-lg-3 d-flex align-items-center mx-auto">
-                <select name="" id="" v-model="selectMonth" class="col-lg-3 form-select fs-4 text-center border-0 text-white bg-transparent select-arrow-none">
-                    <option v-for="i in 12" :key="i + 49" :value="i" :class="{'bg-purple': selectMonth === 1, 'bg-blue': selectMonth === 2, 'bg-pink': selectMonth === 3, 'bg-green-4': selectMonth === 4, 'bg-green-5': selectMonth === 5, 'bg-yellow': selectMonth === 6, 'bg-orange': selectMonth === 7, 'bg-red': selectMonth === 8, 'bg-darkRed': selectMonth === 9, 'bg-darkOrange': selectMonth === 10, 'bg-brown': selectMonth === 11, 'bg-darkBlue': selectMonth === 12}" >{{ i }} 月</option>
-                </select>
-                <button type="button" class="btn border" :disabled="selectMonth === 1" @click="selectMonth -= 1"><i class="bi bi-caret-up-fill text-white"></i></button>
-                <button type="button" class="btn border ms-3" :disabled="selectMonth === 12" @click="selectMonth += 1"><i class="bi bi-caret-down-fill text-white"></i></button>
+    <div class="col">
+        <div class="card bg-no-repeat bg-cover" :style="`background-image: url('${bgImg}')`">
+            <div class="card-header border-0">
+                <div class="d-flex align-items-center">
+                  <select name="" id="" class="form-select text-center border-0 fs-lg-3 fs-4 text-white bg-transparent" v-model="selectYear" style="width: 150px;">
+                    <option v-for="(i, index) in 15" :key="i + 68" :value="2023 + index" class="text-dark">{{2023 + index}}</option>
+                  </select>
+                  <select name="" id="" v-model="selectMonth" class="form-select mx-auto fs-lg-3 fs-4 text-center border-0 text-white select-arrow-none" style="width: 150px;">
+                      <option v-for="i in 12" :key="i + 49" :value="i" class="text-dark">{{ i }} 月</option>
+                  </select>
+                  <button type="button" class="btn border ms-auto" :disabled="selectMonth === 1" @click="selectMonth -= 1"><i class="bi bi-caret-up-fill text-white"></i></button>
+                  <button type="button" class="btn border ms-3" :disabled="selectMonth === 12" @click="selectMonth += 1"><i class="bi bi-caret-down-fill text-white"></i></button>
                 </div>
             </div>
-            <div class="card-body pb-0">
-                <table class="table calendar text-center">
-                    <thead class="fs-5 border-bottom border-primary">
+            <div class="card-body p-0">
+                <table class="table calendar text-center border" :class="`border-${color}`">
+                    <thead class="fs-lg-5">
                         <tr>
                             <th width="100">日</th>
                             <th width="100">一</th>
@@ -103,9 +112,9 @@ export default {
                     </thead>
                     <tbody>
                     <tr v-for="(i) in weekNum" :key="i + 902" height="80">
-                        <td v-for="k in 7" :key="k + 83" :class="{'pointer-events-none': (i === 1 && k <= startOfWeek) || (i === weekNum && k > endDay && endDay !== 0), 'bg-lightGray': (i === 1 && k <= startOfWeek) || (i === weekNum && k > endDay && endDay !== 0), 'today': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth}-${allDate(k, i)}`, 'active-date': `${selectYear}-${selectMonth}-${allDate(k, i)}` === dataId}" @click="watchSchedule (k, i)">
-                            <h5 class="fs-lg-5 fs-6">{{ allDate(k, i) }}</h5>
-                            <span v-if="data && data[`${selectYear}-${selectMonth}-${allDate(k, i)}`]" class="badge rounded-pill bg-primary fs-lg-6">{{ Object.values(data[`${selectYear}-${selectMonth}-${allDate(k, i)}`]).length }}項</span>
+                        <td v-for="k in 7" :key="k + 83" :class="{'pointer-events-none': (i === 1 && k <= startOfWeek) || (i === weekNum && k > endDay && endDay !== 0), [`bg-${color}`]:new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth}-${allDate(k, i)}` && `${selectYear}-${selectMonth}-${allDate(k, i)}` !== dataId, [activeColor]: `${selectYear}-${selectMonth}-${allDate(k, i)}` === dataId}" @click="getOneDayInfo (k, i)">
+                            <h5 class="fs-lg-5 fs-6" :class="{'text-white': new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth}-${allDate(k, i)}`, [`text-${color}`]:`${selectYear}-${selectMonth}-${allDate(k, i)}` === dataId}">{{ allDate(k, i) }}</h5>
+                            <span v-if="data && data[`${selectYear}-${selectMonth}-${allDate(k, i)}`]" class="badge rounded-pill fs-lg-6 fs-10" :class="{[`bg-${color}`]: true, [`text-${color}`]: `${selectYear}-${selectMonth}-${allDate(k, i)}` === dataId || new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth}-${allDate(k, i)}`, 'bg-white': `${selectYear}-${selectMonth}-${allDate(k, i)}` === dataId || new Date().toLocaleDateString().replace(/\//g, '-') === `${selectYear}-${selectMonth}-${allDate(k, i)}`}">{{ Object.values(data[`${selectYear}-${selectMonth}-${allDate(k, i)}`]).length }}<span class="d-none d-lg-inline-block">項</span></span>
                         </td>
                     </tr>
                     </tbody>
