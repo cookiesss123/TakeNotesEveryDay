@@ -30,7 +30,7 @@ export default {
       monthlySelectMonth: new Date().getMonth() + 1,
       annualSelectYear: new Date().getFullYear(),
 
-      dateArr: [], // 日期的 key值 陣列們
+      dateArr: [],
       monthlyStatement: [], // 某月帳款
       annualStatement: [], // 某年帳款
       pageStatus: '收支紀錄',
@@ -62,6 +62,7 @@ export default {
           const dataRef = ref(db, `/accounts/${user.uid}`)
           onValue(dataRef, snapshot => {
             this.allAccounts = snapshot.val() // 不知道發什麼神經
+            this.endLoading()
             if (!this.allAccounts) {
               return
             }
@@ -70,7 +71,6 @@ export default {
               this.oneDayAccountList = []
             }
             this.dateArr = Object.keys(this.allAccounts) // 計算有帳款的日期
-            this.endLoading()
           })
         } else {
           this.uid = null

@@ -70,7 +70,6 @@ export default {
       }
     },
     dataId () {
-      console.log(`${this.selectYear}-${this.selectMonth}-${this.date}`, '目前id')
       return `${this.selectYear}-${this.selectMonth}-${this.date}`
     },
     color () { // 深色

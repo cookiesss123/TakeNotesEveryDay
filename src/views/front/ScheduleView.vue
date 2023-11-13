@@ -181,7 +181,7 @@ export default {
                       <i class="bi bi-x fs-15 fs-lg-3 cursor-pointer" @click="openDeleteModal(scheduleId, work.id)"></i>
                     </td>
                   </tr>
-                  <tr v-if="!oneDaySchedule.length" class="text-center pointer-events-none">
+                  <tr v-if="!oneDaySchedule || !oneDaySchedule.length" class="text-center pointer-events-none">
                     <img src="../../assets/images/undraw_Notebook_re_id0r.png" alt="尚無紀錄">
                     <p class="fs-6 fs-lg-4">尚無紀錄</p>
                   </tr>
